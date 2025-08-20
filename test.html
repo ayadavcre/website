@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Itz Delhi Times — Itz Delhi Restaurant</title>
+
+  <!-- Google Fonts: poster + newspaper serif + Devanagari -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif+Devanagari:wght@400;700&family=Mukta:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="test.css" />
+</head>
+
+<body class="paper">
+
+  <!-- ===== Masthead / Header ===== -->
+  <header class="masthead" role="banner">
+    <!-- <div class="masthead-top">
+      <span class="smallcaps">VOL. 1, NO. 1</span>
+      <span class="smallcaps center">SPECIAL EDITION</span>
+      <time class="smallcaps">18 APRIL 2025</time>
+    </div> -->
+
+    <div class="brandline">
+      <h1 class="newspaper-title" aria-label="Ttz Delhi Times">Itz Delhi Times</h1>
+    </div>
+
+    <!-- <nav class="nav">
+      <a href="#hero">Home</a>
+      <a href="#special">आज का स्पेशल</a>
+      <a href="#menu">Menu</a>
+      <a href="#palm">पत्तल (Palm Leaf)</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#gallery">Gallery</a>
+    </nav> -->
+  </header>
+
+  <!-- ===== Hero (Video) ===== -->
+  <section id="hero" class="hero" aria-label="Video hero">
+    <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-poster.jpg">
+      <source src="assets/hero.webm" type="video/webm" />
+      <source src="/vidcan.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay">
+      <p class="kicker">खबरें गरम हैं!</p>
+      <h2 class="headline">From the hearts of Delhi to the street of Doncaster</h2>
+    </div>
+  </section>
+
+  <section id="chefs-specials-pro" class="specials">
+    <header class="wrap hd">
+      <h2>Chef’s Ledger • शेफ़ की पसंद</h2>
+      <p class="dek">Three icons — a little history on every plate.</p>
+    </header>
+
+    <div class="wrap">
+      <div class="carousel" data-autoplay="true" data-interval="5000" aria-roledescription="carousel">
+        <div class="viewport" aria-live="polite">
+          <ul class="track" id="specials-track">
+            <!-- Slide 1 -->
+            <li class="slide">
+              <article class="card clipping">
+                <figure class="media">
+                  <img src="assets/samosa.jpg" alt="2 Samosas with chutney" />
+                  <figcaption class="chip">£5.49</figcaption>
+                  <span class="no">01</span>
+                </figure>
+                <div class="body">
+                  <div class="meta">
+                    <span class="tag">Delhi • Street Classic</span>
+                    <span class="rule"></span>
+                  </div>
+                  <h3 class="title">2 Samosas & Chutney</h3>
+                  <p class="copy">
+                    Delicate pastry parcels, generously filled with spiced potato and peas. Served with a lively,
+                    freshly made chutney — a simple pleasure from the streets of Delhi.
+                  </p>
+                  <p class="origin">
+                    <strong>Origin:</strong> Delhi street stalls; spread via railway canteens & halwai shops in the early 20th century.
+                  </p>
+                  <ul class="badges">
+                    <li class="badge">V</li>
+                    <li class="badge">Crisp & Light</li>
+                  </ul>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 2 -->
+            <li class="slide">
+              <article class="card clipping">
+                <figure class="media">
+                  <img src="assets/chole-kulche.jpg" alt="Amritsari Chole Kulche" />
+                  <figcaption class="chip">£11.99</figcaption>
+                  <span class="no">02</span>
+                </figure>
+                <div class="body">
+                  <div class="meta">
+                    <span class="tag">Amritsar • Punjabi Heritage</span>
+                    <span class="rule"></span>
+                  </div>
+                  <h3 class="title">Amritsari Chole Kulche</h3>
+                  <p class="copy">
+                    Soft, fluffy kulchas with spiced chickpea curry — hearty, comforting, bold Punjabi flavour straight from Amritsar.
+                  </p>
+                  <p class="origin">
+                    <strong>Origin:</strong> Walled city of Amritsar; tandoor-bakers serving kulcha with robust chole for generations.
+                  </p>
+                  <ul class="badges">
+                    <li class="badge">🌶️ मध्यम</li>
+                    <li class="badge">Street Favorite</li>
+                  </ul>
+                </div>
+              </article>
+            </li>
+
+            <!-- Slide 3 -->
+            <li class="slide">
+              <article class="card clipping">
+                <figure class="media">
+                  <img src="assets/butter-chicken.jpg" alt="Butter Chicken" />
+                  <figcaption class="chip">£14.99</figcaption>
+                  <span class="no">03</span>
+                </figure>
+                <div class="body">
+                  <div class="meta">
+                    <span class="tag">Old Delhi • Makhani</span>
+                    <span class="rule"></span>
+                  </div>
+                  <h3 class="title">Butter Chicken</h3>
+                  <p class="copy">
+                    Tender chicken in a silky tomato-makhani sauce — smoky tandoor notes balanced by butter and cream.
+                  </p>
+                  <p class="origin">
+                    <strong>Origin:</strong> Post-partition Delhi; popularised by Moti Mahal — tandoori leftovers simmered in buttery makhani gravy.
+                  </p>
+                  <ul class="badges">
+                    <li class="badge">House Favorite</li>
+                    <li class="badge">Rich & Silky</li>
+                  </ul>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Controls -->
+        <button class="nav prev" aria-label="Previous slide" type="button">‹</button>
+        <button class="nav next" aria-label="Next slide" type="button">›</button>
+
+        <!-- Dots -->
+        <div class="dots" role="tablist" aria-label="Choose slide">
+          <button class="dot is-active" role="tab" aria-controls="specials-track" aria-selected="true" data-index="0"></button>
+          <button class="dot" role="tab" aria-controls="specials-track" aria-selected="false" data-index="1"></button>
+          <button class="dot" role="tab" aria-controls="specials-track" aria-selected="false" data-index="2"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section class="menu-section">
+    <div class="menu-container">
+      <h2 class="menu-heading">OUR MENU</h2>
+
+      <!-- FROM THE STREETS OF DELHI -->
+      <div class="menu-intro">
+        <h3 class="menu-subheading">FROM THE STREETS OF DELHI</h3>
+        <p>
+          The flavours of Delhi have always brought people together. From bustling bazaars to quiet family kitchens, food
+          crossed every border. Itz Delhi Times proudly carries that tradition forward — a true taste of home.
+        </p>
+      </div>
+
+      <!-- SMALL PLATES -->
+      <div class="menu-category">
+        <h3 class="category-heading">SMALL PLATES</h3>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>2 Samosas &amp; Chutney (V)</h4><span>£5.49</span>
+          </div>
+          <p class="text-sm">Delicate pastry parcels, generously filled with spiced potato and peas. Served with a lively, freshly made chutney — a
+            simple pleasure from the streets of Delhi.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Samosa Chaat (V)</h4><span>£7.49</span>
+          </div>
+          <p class="text-sm">A crushed samosa layered with spiced chickpeas, cooling yoghurt, and fresh chutneys. A vibrant, comforting dish loved
+            on the streets of Delhi.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Bombay Bhel Puri 🌶️🌶️ (N)</h4><span>£7.49</span>
+          </div>
+          <p class="text-sm">A light, crunchy mix of puffed rice, sev, potatoes, onions, and chutneys. Sweet, tangy, and crisp, a Bombay street-side
+            favourite, best eaten before it softens. <em>(contains peanut)</em></p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Nachos</h4><span>£5.99</span>
+          </div>
+          <p class="text-sm">Crisp tortilla chips topped with melted mozzarella, fresh salsa, and jalapeños. Tangy, vibrant, and full of flavour —
+            perfect for sharing.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chilli Garlic Chicken 🌶️🌶️🌶️</h4><span>£8.49</span>
+          </div>
+          <p class="text-sm">Crispy chicken tossed in a spicy Indo-Chinese garlic sauce with spring onions and red chillies. A fiery favourite —
+            bold, addictive, and full of flavour.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Sticky Chicken 🌶️</h4><span>£8.49</span>
+          </div>
+          <p class="text-sm">Crispy chicken tossed in a rich, sweet-soy and chilli glaze, with garlic and a dash of spice. A bold Indo-Chinese
+            classic — sticky, savoury, and full of flavour.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Papdi Chaat (V)</h4><span>£7.49</span>
+          </div>
+          <p class="text-sm">Crispy, crunchy papdis topped with tangy yogurt, tamarind chutney, and a burst of spices. A perfect blend of sweet,
+            sour, and spicy.</p>
+        </div>
+      </div>
+
+      <!-- LUNCH SPECIALS -->
+      <div class="menu-category">
+        <h3 class="category-heading">LUNCH SPECIALS</h3>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Amritsari Chole Kulche (V)</h4><span>£11.99</span>
+          </div>
+          <p class="text-sm">Soft, fluffy kulchas served with spiced chickpea curry, straight from the streets of Amritsar. Hearty &amp; comforting.
+          </p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Aloo Tikki Chaat (V)</h4><span>£7.49</span>
+          </div>
+          <p class="text-sm">Crispy, spiced potato tikki served with tangy yogurt, chutneys, and a sprinkle of spices. Deliciously savory &amp;
+            crunchy.
+          </p>
+        </div>
+      </div>
+
+      <!-- GRILLS -->
+      <div class="menu-category">
+        <h3 class="category-heading">GRILLS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Veg. Grilled Sandwich (V)</h4><span>£7.99</span>
+          </div>
+          <p class="text-sm">Golden toasted sandwich filled with bell peppers, onions, jalapeños, sweetcorn, and melted mozzarella. Finished with a
+            touch of mayonnaise — warm, creamy, and full of flavour.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Grilled Sandwich</h4><span>£8.99</span>
+          </div>
+          <p class="text-sm">Chicken layered with bell peppers, onions, jalapeños, sweetcorn, and mozzarella, pressed in golden toasted bread.
+            Creamy, cheesy, and comforting.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Special Indian Grilled Sandwich</h4><span>£8.99</span>
+          </div>
+          <p class="text-sm">Toasted bread filled with spiced paneer, peppers, onions, jalapeños, sweetcorn, mozzarella, and a touch of mayo —
+            inspired by Delhi’s bustling sandwich stalls.</p>
+        </div>
+      </div>
+
+      <!-- BURGERS -->
+      <div class="menu-category">
+        <h3 class="category-heading">BURGERS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Veg. Tikki Burger (V)</h4><span>£6.99</span>
+          </div>
+          <p class="text-sm">A crispy vegetable patty stacked with lettuce, tomatoes, onions, mozzarella, burger sauce, and a touch of mint chutney.
+            Toasted bun; bold flavours.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Burger</h4><span>£7.99</span>
+          </div>
+          <p class="text-sm">Grilled chicken with mozzarella, lettuce, onions, tomatoes, burger sauce, mint chutney, and a rich makhni drizzle in a
+            toasted bun.</p>
+        </div>
+      </div>
+
+      <!-- RICE BOWLS -->
+      <div class="menu-category">
+        <h3 class="category-heading">RICE BOWLS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Makhani Rice Bowl (V)</h4><span>£9.99</span>
+          </div>
+          <p class="text-sm">Fragrant pilau rice topped with a rich, buttery makhani curry, finished with onions, spring onions, and fresh coriander
+            — creamy, warming and deeply satisfying. <br><b>Add ons:</b> Paneer £1.99 • Chicken £1.99</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Butter Chicken Rice Bowl</h4><span>£12.99</span>
+          </div>
+          <p class="text-sm">Pilau rice topped with tender butter chicken in a rich, creamy butter masala, finished with fresh coriander and spring
+            onions.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Jalfrezi Rice Bowl 🌶️</h4><span>£12.99</span>
+          </div>
+          <p class="text-sm">Tender chicken cooked in a spiced tomato &amp; pepper sauce, garnished with onions, spring onions, and coriander — fiery
+            and vibrant.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Tikka Masala Rice Bowl</h4><span>£12.99</span>
+          </div>
+          <p class="text-sm">Succulent chicken tikka in a smooth, spiced masala, served over fragrant pilau rice and finished with coriander and
+            spring onions.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Punjabi Chole Rice Bowl 🌶️ (V)</h4><span>£9.99</span>
+          </div>
+          <p class="text-sm">Slow-cooked chickpeas in a spiced Punjabi gravy, finished with onions, spring onions, and coriander — wholesome and
+            hearty.</p>
+        </div>
+      </div>
+
+      <!-- CURRIES FROM OLD DELHI -->
+      <div class="menu-category">
+        <h3 class="category-heading">CURRIES FROM OLD DELHI</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Butter Chicken</h4><span>£14.99</span>
+          </div>
+          <p class="text-sm">Born in Delhi in the 1950s, this creamy, spiced tomato curry was created to revive tandoori chicken — now a beloved
+            classic around the world.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Jalfrezi 🌶️🌶️</h4><span>£12.99</span>
+          </div>
+          <p class="text-sm">Tender chicken stir-fried with peppers, onions, and a bold tomato-based sauce. Spicy, vibrant, and full of punch.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Tikka Masala</h4><span>£12.99</span>
+          </div>
+          <p class="text-sm">Smoky grilled chicken tikka simmered in a rich, creamy tomato curry — comforting and iconic.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Paneer Makhani (V)</h4><span>£11.99</span>
+          </div>
+          <p class="text-sm">Soft paneer in a rich, buttery tomato gravy — the vegetarian cousin of butter chicken.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Punjabi Chole 🌶️ (V)</h4><span>£8.99</span>
+          </div>
+          <p class="text-sm">Slow-cooked chickpeas in a spiced tomato-onion masala — soulful and satisfying.</p>
+        </div>
+      </div>
+
+      <!-- BIG PLATTERS -->
+      <div class="menu-category">
+        <h3 class="category-heading">BIG PLATTERS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Thali</h4><span>£17.99</span>
+          </div>
+          <p class="text-sm">Choose any 2 from: Butter Chicken, Chicken Jalfrezi, Chicken Tikka Masala. Served with pilau rice, butter naan, 2
+            samosas, poppadom, fresh salad, pickle, mango &amp; mint chutneys.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Veg. Thali (V)</h4><span>£15.99</span>
+          </div>
+          <p class="text-sm">Paneer Makhani + Punjabi Chole with pilau rice, butter naan, 2 samosas, poppadom, salad, pickle, mango &amp; mint
+            chutneys.
+          </p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Poppadom &amp; Pickle Tray</h4><span>£4.99</span>
+          </div>
+          <p class="text-sm">Six crispy poppadoms with mint sauce, mixed pickle, mango chutney, tamarind sauce, Schezwan chutney &amp; vinegar onions.
+          </p>
+        </div>
+      </div>
+
+      <!-- CHIPS -->
+      <div class="menu-category">
+        <h3 class="category-heading">CHIPS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Salted Chips</h4><span>£3.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Peri-Peri Chips 🌶️</h4><span>£3.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Loaded Chips</h4><span>£4.49</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Curry Chips</h4><span>£5.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Butter Chicken Chips</h4><span>£6.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chicken Tikka Masala Chips</h4><span>£6.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Makhani Curry Chips</h4><span>£7.99</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BREADS -->
+      <div class="menu-category">
+        <h3 class="category-heading">BREADS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Butter Naan</h4><span>£2.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Coriander &amp; Garlic Naan</h4><span>£3.49</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Amritsari Kulcha</h4><span>£2.99</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDES -->
+      <div class="menu-category">
+        <h3 class="category-heading">SIDES</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Pilau Rice</h4><span>£3.49</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Raita</h4><span>£3.49</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Punjabi Samosa (V)</h4><span>£2.49</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COFFEE • HOT & COLD -->
+      <div class="menu-category">
+        <h3 class="category-heading">COFFEE • HOT &amp; COLD</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Cappuccino</h4><span>£2.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Caffè Latte</h4><span>£2.99</span>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Americano</h4><span>£2.99</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MASALA CHAI -->
+      <div class="menu-category">
+        <h3 class="category-heading">MASALA CHAI</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Masala Chai</h4><span>£2.99</span>
+          </div>
+          <p class="text-sm">Masala Chai began over 5,000 years ago as an Ayurvedic spiced brew. With the British introduction of black tea, it
+            evolved into the rich, spiced milk tea loved across India today.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Kadak Adrak Chai</h4><span>£2.99</span>
+          </div>
+          <p class="text-sm">Strong, spiced, and full of comfort. This bold ginger tea is a household favourite — ideal for early mornings or
+            monsoon evenings.</p>
+        </div>
+      </div>
+
+      <!-- MANGO / ROSE LASSI -->
+      <div class="menu-category">
+        <h3 class="category-heading">MANGO / ROSE LASSI</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Mango Lassi</h4><span>£4.99</span>
+          </div>
+          <p class="text-sm">Born in Punjab, Mango Lassi blends sweet mangoes with creamy yogurt — a global favourite for cool comfort.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Rose Lassi</h4><span>£4.99</span>
+          </div>
+          <p class="text-sm">A North Indian classic — creamy yogurt with floral rose syrup. Traditionally sipped in summer for a cooling, calming
+            effect.</p>
+        </div>
+      </div>
+
+      <!-- SHAKES -->
+      <div class="menu-category">
+        <h3 class="category-heading">SHAKES</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Oreo Shake</h4><span>£6.99</span>
+          </div>
+          <p class="text-sm">Made with rich vanilla ice cream and real Oreo cookies — smooth, classic delight.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Strawberry Shake</h4><span>£6.99</span>
+          </div>
+          <p class="text-sm">Made with real strawberries and creamy vanilla ice cream for a refreshing, fruity classic.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>KitKat Shake</h4><span>£6.99</span>
+          </div>
+          <p class="text-sm">Made with creamy vanilla ice cream and crunchy Kit Kat bars, blended into a smooth, chocolatey treat.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Chocolate Shake</h4><span>£5.99</span>
+          </div>
+          <p class="text-sm">A creamy blend of vanilla ice cream, milk, and rich chocolate syrup, topped with whipped cream.</p>
+        </div>
+      </div>
+
+      <!-- SPECIALS -->
+      <div class="menu-category">
+        <h3 class="category-heading">SPECIALS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Special Ice Cream Gulab Jamun</h4><span>£4.99</span>
+          </div>
+          <p class="text-sm">A delightful fusion of warm, syrup-soaked Gulab Jamun paired with creamy ice cream — the perfect balance of rich
+            sweetness and cool indulgence.</p>
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="menu-category">
+        <h3 class="category-heading">DESSERTS</h3>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Gulab Jamun</h4><span>£2.99</span>
+          </div>
+          <p class="text-sm">Irresistibly soft, golden milk dumplings soaked in fragrant rose-infused syrup — a luxurious, melt-in-your-mouth
+            dessert with royal heritage.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Rasmalai</h4><span>£2.99</span>
+          </div>
+          <p class="text-sm">Delicate, spongy white cream-soaked milk dumplings infused with saffron and cardamom — rich, aromatic, simply heavenly.
+          </p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header">
+            <h4>Rasgulla</h4><span>£2.99</span>
+          </div>
+          <p class="text-sm">Soft, spongy white dumplings made from fresh cottage cheese, soaked in sweet fragrant syrup — a classic Bengali
+            delicacy.</p>
+        </div>
+      </div>
+
+      <!-- LEGEND + NOTICES -->
+      <div class="menu-legend">
+        <p class="text-center font-semibold mb-3">🌶️ = Spice &nbsp; | &nbsp; (V) = Vegetarian &nbsp; | &nbsp; (N) = Contains Nuts</p>
+        <div class="menu-section">
+          <div class="menu-item">
+            <p>Dishes marked (V) are vegetarian but may contain eggs. Those marked (N) contain nuts. While we take every care to prevent
+              cross-contamination, we cannot guarantee our food and drinks are completely allergen-free.</p>
+          </div>
+          <div class="menu-item">
+            <p>Please inform us of any allergies or dietary requirements — we’re happy to help. We add an optional 12.5% service charge to your bill,
+              all of which goes to our team. If your experience wasn’t up to the mark, just let us know; we’re happy to remove it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <blockquote class="menu-quote">
+      “दिल जीते बिना बात नहीं बनती”—our food aims straight for the दिल.
+    </blockquote>
+  </section>
+
+
+
+
+
+  <!-- ===== Palm-Leaf Sustainability ===== -->
+  <section id="palm" class="section wrap">
+    <header class="section-hd">
+      <h2>ITZ DELHI ♥ EARTH — पत्तल पर परोसा</h2>
+      <p class="dek">“जैसा देश, वैसा वेश; जैसा भोजन, वैसी सोच” — sustainable by design.</p>
+    </header>
+
+    <div class="eco layout-2">
+      <figure class="eco-photo">
+        <img src="./zero-waste-green-biodegradable-tableware-with-cups.jpg" alt="Meals served on palm leaf plates" />
+        <figcaption>Areca palm-leaf plates — sturdy, compostable, chemical-free.</figcaption>
+      </figure>
+      <div class="eco-copy clipping">
+        <h3 class="stamp">SPECIAL REPORT</h3>
+        <p>
+          We plate on palm-leaf (areca) dishes that biodegrade in weeks—no plastic,
+          no coating. “धरती माँ की सेवा”—from kitchen to soil with न्यूनतम कचरा.
+        </p>
+        <ul class="ticks">
+          <li>Compostable • Food-safe • Microwave-friendly</li>
+          <li>Each piece uniquely grained—just like old newsprint textures</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reservations ===== -->
+  <section id="reserve" class="section wrap">
+    <header class="section-hd">
+      <h2>Reserve • बुकिंग</h2>
+      <p class="dek">“देर आए दुरुस्त आए”—walk-ins welcome, booking is बेहतर.</p>
+    </header>
+
+    <form class="reserve-form" action="#" method="post">
+      <label>
+        Name
+        <input type="text" name="name" required />
+      </label>
+      <label>
+        Email
+        <input type="email" name="email" required />
+      </label>
+      <label>
+        Phone
+        <input type="tel" name="phone" inputmode="tel" />
+      </label>
+      <label>
+        Date
+        <input type="date" name="date" required />
+      </label>
+      <label>
+        Time
+        <input type="time" name="time" required />
+      </label>
+      <label>
+        Party Size
+        <input type="number" name="size" min="1" max="20" value="2" />
+      </label>
+      <label class="full">
+        Notes
+        <textarea name="notes" rows="3" placeholder="Allergies, high-chair, birthdays…"></textarea>
+      </label>
+      <button class="btn btn-stub" type="submit">Confirm Request</button>
+      <p class="fineprint">Allergen info available on request. Optional 12.5% service charge goes to staff.</p>
+    </form>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section id="gallery" class="section wrap">
+    <header class="section-hd">
+      <h2>Gallery • गैलरी</h2>
+      <p class="dek">“देखो मगर प्यार से”—hover for रंगीन drama.</p>
+    </header>
+
+    <div class="gallery-grid">
+      <figure><img src="assets/g1.jpg" alt="Dish photo 1"></figure>
+      <figure><img src="assets/g2.jpg" alt="Dish photo 2"></figure>
+      <figure><img src="assets/g3.jpg" alt="Dish photo 3"></figure>
+      <figure><img src="assets/g4.jpg" alt="Dish photo 4"></figure>
+      <figure><img src="assets/g5.jpg" alt="Interior 1"></figure>
+      <figure><img src="assets/g6.jpg" alt="Interior 2"></figure>
+      <figure><img src="assets/g7.jpg" alt="Chef"></figure>
+      <figure><img src="assets/g8.jpg" alt="Guests"></figure>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div>
+        <h4>Itz Delhi</h4>
+        <p>“अतिथि देवो भवः” — We cook, you smile.</p>
+        <p>123 High Street, Doncaster DN1 · +44 0000 000000</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <p>Mon–Thu 12–22 • Fri–Sat 12–23 • Sun 12–21</p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <p>@itzdelhi (IG) • /itzdelhi (FB)</p>
+        <a class="btn btn-stamp" href="#reserve">BOOK A TABLE</a>
+      </div>
+    </div>
+    <div class="rule"><span>✺</span></div>
+    <p class="copyright">© 2025 Itz Delhi. “सादा जीवन, उच्च विचार”—and superb food.</p>
+  </footer>
+  <script src="test.js"></script>
+</body>
+
+</html>
