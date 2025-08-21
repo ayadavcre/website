@@ -667,6 +667,52 @@ body {
 }
 
 /* Eco section */
+
+/* ===== Eco Section Styling (Palm Leaf) ===== */
+.eco.layout-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.eco-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid #000;
+  box-shadow: 4px 4px 0 #0003;
+}
+
+.eco-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fffdf7;
+  padding: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.eco-copy .ticks {
+  list-style: none;
+  padding: 0;
+}
+
+.eco-copy .ticks li {
+  margin: 0.5rem 0;
+  position: relative;
+  padding-left: 1.4em;
+}
+
+.eco-copy .ticks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #0d6b6b;
+  font-weight: bold;
+}
+
 .layout-2 {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
