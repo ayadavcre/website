@@ -1055,3 +1055,145 @@ body {
     bottom: 0.25rem;
   }
 }
+/* ===== Bollywood-style Map ===== */
+.map-section {
+  /* subtle film-poster vibe on paper */
+  background:
+    radial-gradient(circle at 12px 12px, #c7a969 2px, transparent 3px) 0 0/28px 28px,
+    var(--paper);
+  padding-bottom: 56px;
+}
+
+.cinema-map { text-align: center; }
+
+.marquee-arch {
+  margin: 0 auto 12px;
+  width: min(980px, 100%);
+}
+
+.arch-title {
+  display: inline-block;
+  padding: .6rem 1.4rem;
+  background: linear-gradient(#b0272c, #8f1e23);
+  color: #fff;
+  border: 3px solid #000;
+  border-radius: 999px 999px 0 0 / 80px 80px 0 0; /* cinema arch */
+  font: 700 clamp(18px,2.6vw,28px) "Alfa Slab One", serif;
+  letter-spacing: .06em;
+  text-shadow: 0 1px 0 #0006;
+  position: relative;
+}
+
+/* tiny bulbs along the arch edge */
+.arch-title::after {
+  content: "";
+  position: absolute;
+  left: 8px; right: 8px; bottom: -10px;
+  height: 10px;
+  background:
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
+    0 0/20px 10px repeat-x;
+}
+
+.arch-sub {
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Framed map with marquee bulbs */
+.cinema-frame {
+  position: relative;
+  width: min(980px, 100%);
+  margin: 10px auto 14px;
+  background: #fff;
+  border: 4px solid #000;
+  box-shadow: 10px 10px 0 #0002, 0 0 0 6px #00000010 inset;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* top + bottom bulb rows */
+.cinema-frame::before,
+.cinema-frame::after {
+  content: "";
+  position: absolute; left: -8px; right: -8px; height: 20px;
+  background:
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
+    0 0/24px 24px repeat-x;
+  pointer-events: none;
+}
+.cinema-frame::before { top: -14px; }
+.cinema-frame::after  { bottom: -14px; transform: scaleY(-1); }
+
+/* side bulb strips (extra spans in HTML) */
+.bulbs.v {
+  position: absolute; top: -8px; bottom: -8px; width: 20px;
+  background:
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
+    0 0/24px 24px repeat-y;
+  pointer-events: none;
+}
+.bulbs.left  { left: -14px; }
+.bulbs.right { right: -14px; transform: scaleX(-1); }
+
+.map-embed {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border: 0;
+  /* keep your gritty newspaper look, sharpen on hover */
+  filter: grayscale(40%) contrast(110%) saturate(90%);
+}
+.map-embed:hover { filter: none; }
+
+.map-cta .fineprint {
+  margin-top: 6px;
+  font-size: .95rem;
+  color: var(--ink-2);
+}
+/* ===== Sustainability: Short Film block ===== */
+.eco-film { margin-top: 18px; }
+
+/* Video figure header (small editorial ribbon) */
+.eco-video .film-hd {
+  margin: 0 0 8px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  display: inline-block;
+  background: #efe7d6;
+  border: 2px solid #000;
+  padding: .25em .55em;
+}
+
+/* Video player frame */
+.eco-video-player {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+  border: 1px solid #000;
+  box-shadow: 4px 4px 0 #0002;
+  background: #000;
+  filter: grayscale(25%) contrast(108%);
+}
+.eco-video-player:hover { filter: none; }
+
+/* Subtle filmstrip sprockets (top & bottom) */
+.filmstrip { position: relative; }
+.filmstrip::before,
+.filmstrip::after {
+  content: "";
+  position: absolute; left: 0; right: 0; height: 14px;
+  background:
+    radial-gradient(circle, #111 32%, transparent 34%) 7px 50% / 28px 10px repeat-x,
+    linear-gradient(#000, #000) center/100% 2px no-repeat;
+  opacity: .18;
+  pointer-events: none;
+}
+.filmstrip::before { top: -8px; }
+.filmstrip::after  { bottom: -8px; transform: scaleY(-1); }
+
+/* Make this block stack nicely on mobile (inherits your existing @media too) */
+@media (max-width: 900px) {
+  .eco-video .film-hd { display: block; text-align: center; }
+}
