@@ -544,6 +544,255 @@ body {
 }
 
 
+
+/* origin sotry part */
+
+
+:root {
+  --paper: #f3efe7;
+  --ink: #1a1a1a;
+  --ink-2: #444;
+  --accent: #b0272c;
+  --gold: #c7a969;
+}
+
+.ot-section {
+  padding: 42px 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.ot-wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.ot-head {
+  margin: 0 0 18px 0;
+  text-align: center
+}
+
+.ot-title {
+  margin: 0;
+  font: 700 clamp(24px, 3.2vw, 40px) "Alfa Slab One", serif;
+  letter-spacing: .02em;
+}
+
+.ot-dek {
+  margin: .4em auto 0;
+  max-width: 720px;
+  color: var(--ink-2);
+  font-style: italic
+}
+
+/* Route ribbon */
+.ot-route {
+  list-style: none;
+  padding: 14px 12px;
+  margin: 14px auto 26px auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #000;
+  background: #fff;
+  box-shadow: 6px 6px 0 #0002;
+}
+
+.ot-route .stop {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  padding: 8px 0
+}
+
+.ot-route .stop::after {
+  content: "";
+  position: absolute;
+  right: -5px;
+  left: calc(50% + 12px);
+  height: 2px;
+  background:
+    repeating-linear-gradient(90deg, #000 0 10px, transparent 10px 18px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ot-route .stop:last-child::after {
+  display: none
+}
+
+.ot-route .dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 2px 2px 0 #0002;
+}
+
+.ot-route .label {
+  font-weight: 700;
+  letter-spacing: .03em
+}
+
+.ot-route .here .dot {
+  background: #000
+}
+
+/* Cards grid */
+.ot-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 960px) {
+  .ot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Clipping corners (ticket look) */
+.ot-clipping {
+  position: relative;
+  background: #fff;
+  border: 1px solid #000;
+  box-shadow: 8px 8px 0 #0002;
+  padding: 16px;
+}
+
+.ot-clipping::before,
+.ot-clipping::after {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  top: -14px;
+  transform: rotate(45deg);
+  border: 1px solid #000;
+  background: var(--paper);
+}
+
+.ot-clipping::before {
+  left: 14px
+}
+
+.ot-clipping::after {
+  right: 14px
+}
+
+/* Card internals */
+.ot-card-hd {
+  margin-bottom: 8px
+}
+
+.stamp {
+  display: inline-block;
+  padding: .2em .5em;
+  border: 2px solid #000;
+  font-weight: 800;
+  letter-spacing: .08em;
+  background: #efe7d6;
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+
+.ot-card-title {
+  margin: .25em 0 0;
+  font: 700 22px "Alfa Slab One", serif
+}
+
+.ot-card-sub {
+  margin: .2em 0 0;
+  color: #333;
+  font-size: .95rem
+}
+
+.ot-media {
+  margin: 10px 0 8px 0;
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0 #0002;
+  overflow: hidden
+}
+
+.ot-media img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  filter: grayscale(25%) contrast(108%)
+}
+
+.ot-media figcaption {
+  padding: 6px 10px;
+  font-size: .85rem;
+  background: #faf7ee;
+  border-top: 1px solid #000
+}
+
+.ot-copy {
+  margin: .5em 0 .6em 0
+}
+
+.ot-dishes {
+  list-style: none;
+  padding: 0;
+  margin: .4em 0 0 0;
+  display: grid;
+  gap: 6px;
+}
+
+.ot-dishes li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ot-dishes li::before {
+  content: "•";
+  font-weight: 700;
+}
+
+.ot-then-now {
+  margin: .9em 0 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.tn {
+  padding: .6em .7em;
+  border: 1px solid #000;
+  background: #fff;
+  box-shadow: 2px 2px 0 #0001;
+}
+
+.then {
+  background: #fff
+}
+
+.now {
+  background: #efe7d6
+}
+
+/* Footer line */
+.ot-footer-line {
+  margin: 22px 0 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+
 /* ---------- Sections ---------- */
 .section {
   padding: 48px 0
@@ -943,7 +1192,7 @@ body {
 
 /* Turn category items into a 2-column grid */
 .menu-category {
-  margin: 2rem 0;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
@@ -1055,6 +1304,7 @@ body {
     bottom: 0.25rem;
   }
 }
+
 /* ===== Bollywood-style Map ===== */
 .map-section {
   /* subtle film-poster vibe on paper */
@@ -1064,7 +1314,9 @@ body {
   padding-bottom: 56px;
 }
 
-.cinema-map { text-align: center; }
+.cinema-map {
+  text-align: center;
+}
 
 .marquee-arch {
   margin: 0 auto 12px;
@@ -1077,8 +1329,9 @@ body {
   background: linear-gradient(#b0272c, #8f1e23);
   color: #fff;
   border: 3px solid #000;
-  border-radius: 999px 999px 0 0 / 80px 80px 0 0; /* cinema arch */
-  font: 700 clamp(18px,2.6vw,28px) "Alfa Slab One", serif;
+  border-radius: 999px 999px 0 0 / 80px 80px 0 0;
+  /* cinema arch */
+  font: 700 clamp(18px, 2.6vw, 28px) "Alfa Slab One", serif;
   letter-spacing: .06em;
   text-shadow: 0 1px 0 #0006;
   position: relative;
@@ -1088,11 +1341,12 @@ body {
 .arch-title::after {
   content: "";
   position: absolute;
-  left: 8px; right: 8px; bottom: -10px;
+  left: 8px;
+  right: 8px;
+  bottom: -10px;
   height: 10px;
   background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
-    0 0/20px 10px repeat-x;
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/20px 10px repeat-x;
 }
 
 .arch-sub {
@@ -1117,25 +1371,43 @@ body {
 .cinema-frame::before,
 .cinema-frame::after {
   content: "";
-  position: absolute; left: -8px; right: -8px; height: 20px;
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  height: 20px;
   background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
-    0 0/24px 24px repeat-x;
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-x;
   pointer-events: none;
 }
-.cinema-frame::before { top: -14px; }
-.cinema-frame::after  { bottom: -14px; transform: scaleY(-1); }
+
+.cinema-frame::before {
+  top: -14px;
+}
+
+.cinema-frame::after {
+  bottom: -14px;
+  transform: scaleY(-1);
+}
 
 /* side bulb strips (extra spans in HTML) */
 .bulbs.v {
-  position: absolute; top: -8px; bottom: -8px; width: 20px;
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  width: 20px;
   background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%)
-    0 0/24px 24px repeat-y;
+    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-y;
   pointer-events: none;
 }
-.bulbs.left  { left: -14px; }
-.bulbs.right { right: -14px; transform: scaleX(-1); }
+
+.bulbs.left {
+  left: -14px;
+}
+
+.bulbs.right {
+  right: -14px;
+  transform: scaleX(-1);
+}
 
 .map-embed {
   width: 100%;
@@ -1144,15 +1416,21 @@ body {
   /* keep your gritty newspaper look, sharpen on hover */
   filter: grayscale(40%) contrast(110%) saturate(90%);
 }
-.map-embed:hover { filter: none; }
+
+.map-embed:hover {
+  filter: none;
+}
 
 .map-cta .fineprint {
   margin-top: 6px;
   font-size: .95rem;
   color: var(--ink-2);
 }
+
 /* ===== Sustainability: Short Film block ===== */
-.eco-film { margin-top: 18px; }
+.eco-film {
+  margin-top: 18px;
+}
 
 /* Video figure header (small editorial ribbon) */
 .eco-video .film-hd {
@@ -1176,24 +1454,43 @@ body {
   background: #000;
   filter: grayscale(25%) contrast(108%);
 }
-.eco-video-player:hover { filter: none; }
+
+.eco-video-player:hover {
+  filter: none;
+}
 
 /* Subtle filmstrip sprockets (top & bottom) */
-.filmstrip { position: relative; }
+.filmstrip {
+  position: relative;
+}
+
 .filmstrip::before,
 .filmstrip::after {
   content: "";
-  position: absolute; left: 0; right: 0; height: 14px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
   background:
     radial-gradient(circle, #111 32%, transparent 34%) 7px 50% / 28px 10px repeat-x,
     linear-gradient(#000, #000) center/100% 2px no-repeat;
   opacity: .18;
   pointer-events: none;
 }
-.filmstrip::before { top: -8px; }
-.filmstrip::after  { bottom: -8px; transform: scaleY(-1); }
+
+.filmstrip::before {
+  top: -8px;
+}
+
+.filmstrip::after {
+  bottom: -8px;
+  transform: scaleY(-1);
+}
 
 /* Make this block stack nicely on mobile (inherits your existing @media too) */
 @media (max-width: 900px) {
-  .eco-video .film-hd { display: block; text-align: center; }
+  .eco-video .film-hd {
+    display: block;
+    text-align: center;
+  }
 }
