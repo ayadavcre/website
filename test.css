@@ -1308,8 +1308,8 @@ body {
 /* ===== Bollywood-style Map ===== */
 .map-section {
   /* subtle film-poster vibe on paper */
-  background:
-    radial-gradient(circle at 12px 12px, #c7a969 2px, transparent 3px) 0 0/28px 28px,
+  background: var(--paper);
+    
     var(--paper);
   padding-bottom: 56px;
 }
