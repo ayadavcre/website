@@ -537,7 +537,7 @@ video {
 }
 
 .ot-route .stop::after {
-  content: "";
+  /* content: ""; */
   position: absolute;
   right: 0;
   left: calc(50% + 12px);
@@ -796,7 +796,7 @@ video {
 }
 
 .item-header::before {
-  content: "";
+  /* content: ""; */
   position: absolute;
   left: 0;
   right: 0;
@@ -1283,12 +1283,12 @@ copyright,
 
 
 /* === Full-bleed poster BEHIND ONLY the Menu section === */
-:root {
+/* :root {
   --menu-poster-desktop: url("/images/post1.jpg");
   --menu-poster-mobile: url("/images/post2.jpg");
   --menu-poster-tint: rgba(247, 242, 228, 0.86);
   --menu-poster-vignette: rgba(0, 0, 0, 0.24);
-}
+} */
 
 /* confine the background to the menu section only */
 .menu-section {
