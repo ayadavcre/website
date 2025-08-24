@@ -1,12 +1,10 @@
-/* ---------- Basics & Theme ---------- */
+/* =============== THEME & BASE =============== */
 :root {
   --paper: #f3efe7;
-  --ink: #222;
+  --ink: #1a1a1a;
   --ink-2: #444;
   --accent: #b0272c;
-  /* deep masthead red */
   --accent-2: #0d6b6b;
-  /* teal pop */
   --gold: #c7a969;
   --rule: #1f1f1f22;
 }
@@ -19,12 +17,12 @@
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html,
 body {
-  height: 100%
+  height: 100%;
 }
 
 body {
@@ -50,92 +48,70 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/ filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/ filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
-}
-
-/* ---------- Masthead ---------- */
-.masthead {
-  padding: 18px 0 0;
 }
 
 .wrap {
   max-width: 1180px;
   margin-inline: auto;
-  padding: 0 20px
+  padding-inline: 20px;
 }
 
-.masthead-top {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 6px 20px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  font: 700 12px "Libre Baskerville", serif;
-  letter-spacing: .08em;
+.section {
+  padding: 48px 0;
 }
 
-.masthead-top .center {
-  text-align: center
+.section-hd h2 {
+  font: 700 clamp(22px, 3.2vw, 36px) "Alfa Slab One", serif;
+  margin: 0;
+  letter-spacing: .5px;
 }
 
-.masthead-top time {
-  justify-self: end
+.section-hd .dek {
+  margin: .4em 0 0;
+  color: var(--ink-2);
+  font-style: italic;
 }
 
-.smallcaps {
-  text-transform: uppercase
+/* keep any accidental x-overflow clipped at container level */
+.wrap,
+.section,
+.clipping {
+  overflow-x: clip;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =============== MASTHEAD =============== */
+.masthead {
+  padding: 18px 0 0;
 }
 
 .brandline {
   max-width: 1180px;
-  margin: 6px auto 0;
+  margin: 6px auto 20px;
   padding: 0 20px;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   gap: 20px;
   position: relative;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.founders {
-  height: 68px;
-  width: auto;
-  filter: grayscale(100%) contrast(120%);
-  mix-blend-mode: multiply;
 }
 
 .newspaper-title {
   margin: 0;
   line-height: 1;
   font-family: 'EngraversOldEnglish', serif;
-  /* text-transform: uppercase; */
-  letter-spacing: 0.05em;
+  letter-spacing: .05em;
   font-size: 3.75rem;
   color: #1a1a1a;
   text-shadow: 0 1px 0 #0002;
-  align-items: center;
-}
-
-.strap {
-  max-width: 1180px;
-  margin: 12px auto 0;
-  padding: 0 20px 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  font: 700 13px/1 "Libre Baskerville", serif;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #333;
-}
-
-.strap .divider {
-  opacity: .6
 }
 
 /* thin broadsheet rule with ornaments */
@@ -143,7 +119,7 @@ body {
   max-width: 1180px;
   margin: 8px auto;
   border-bottom: 1px solid var(--rule);
-  text-align: center
+  text-align: center;
 }
 
 .rule span {
@@ -151,10 +127,11 @@ body {
   transform: translateY(50%);
   padding: 0 8px;
   background: var(--paper);
-  color: #333
+  color: #333;
 }
 
-.nav {
+/* header nav (scoped so it doesn't clash with carousel .nav) */
+.masthead .nav {
   max-width: 1180px;
   margin: 0 auto;
   padding: 8px 20px 2px;
@@ -166,48 +143,24 @@ body {
   text-transform: uppercase;
 }
 
-.nav a {
+.masthead .nav a {
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px dotted #0003
+  border-bottom: 1px dotted #0003;
 }
 
-.nav a:hover {
-  border-bottom-color: #000
+.masthead .nav a:hover {
+  border-bottom-color: #000;
 }
 
-/* Ticker */
-.ticker {
-  max-width: 1180px;
-  margin: 8px auto 0;
-  padding: 6px 20px;
-  overflow: hidden
-}
-
-.ticker p {
-  white-space: nowrap;
-  animation: scroll 28s linear infinite;
-  font: italic 600 14px/1.4 "Mukta", "Noto Serif Devanagari", serif;
-}
-
-@keyframes scroll {
-  from {
-    transform: translateX(0)
-  }
-
-  to {
-    transform: translateX(-100%)
-  }
-}
-
-/* ---------- Hero ---------- */
+/* =============== HERO =============== */
 .hero {
   position: relative;
   min-height: 75vh;
   display: grid;
   place-items: center;
   overflow: hidden;
-  margin-top: 6px
+  margin-top: 6px;
 }
 
 .hero-video {
@@ -216,7 +169,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(80%) contrast(105%) brightness(0.85);
+  filter: grayscale(80%) contrast(105%) brightness(.85);
 }
 
 .hero:after {
@@ -230,13 +183,13 @@ body {
   position: relative;
   text-align: center;
   color: #fff;
-  padding: 20px
+  padding: 20px;
 }
 
 .kicker {
   font: 700 15px "Libre Baskerville", serif;
   letter-spacing: .08em;
-  text-transform: uppercase
+  text-transform: uppercase;
 }
 
 .headline {
@@ -245,7 +198,7 @@ body {
   text-shadow: 0 2px 8px #000c;
 }
 
-/* Buttons: ticket stub + stamp */
+/* Buttons */
 .btn {
   display: inline-block;
   text-decoration: none;
@@ -259,7 +212,7 @@ body {
 }
 
 .btn-stub {
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 0 0)
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 0 0);
 }
 
 .btn-stamp {
@@ -269,104 +222,90 @@ body {
   box-shadow: 2px 2px 0 #000;
 }
 
-:root {
-  --paper: #f3efe7;
-  --ink: #1a1a1a;
-  --ink-2: #444;
-  --accent: #b0272c;
-  --rule: #1f1f1f22;
-}
-
-* {
-  box-sizing: border-box
-}
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: "Libre Baskerville", "Noto Serif Devanagari", serif;
-  margin: 0
-}
-
-.wrap {
-  max-width: 1180px;
-  margin-inline: auto;
-  padding-inline: 20px
+/* =============== SPECIALS: CAROUSEL =============== */
+.specials {
+  padding: 48px 0;
 }
 
 .hd h2 {
   margin: 0;
   letter-spacing: .02em;
-  font: 700 clamp(24px, 3.2vw, 40px) "Alfa Slab One", serif
+  font: 700 clamp(24px, 3.2vw, 40px) "Alfa Slab One", serif;
 }
 
 .hd .dek {
   margin: .35em 0 0;
   color: var(--ink-2);
-  font-style: italic
+  font-style: italic;
 }
 
-.specials {
-  padding: 48px 0
-}
-
-/* --- Carousel layout (no scrollbar, one slide at a time) --- */
 .carousel {
   position: relative;
-  user-select: none
+  user-select: none;
 }
 
-.viewport {
+.carousel .viewport {
+  position: relative;
   overflow: hidden;
-  /* hides scrollbar */
+  contain: layout paint;
+  overscroll-behavior-x: contain;
   border: 1px solid #000;
   background: #fff;
   box-shadow: 10px 10px 0 #0002, 0 0 0 6px #00000006 inset;
 }
 
-.track {
+.carousel .track {
   list-style: none;
-  align-items: stretch;
   margin: 0;
   padding: 0;
   display: flex;
-  width: 100%;
+  align-items: stretch;
   transform: translateX(0%);
   transition: transform .5s cubic-bezier(.22, .61, .36, 1);
+  will-change: transform;
 }
 
-.slide {
-  min-width: 100%;
+.carousel .slide {
+  flex: 0 0 100%;
+  max-width: 100%;
   display: flex;
-  padding: 0
+  padding: 0;
 }
 
-/* --- Card styling (editorial newspaper) --- */
+/* Card styling */
 .clipping {
   position: relative;
   background: #fff;
-  padding: 16px
+  border: 1px solid #000;
+  box-shadow: 6px 6px 0 #0003;
+  padding: 16px;
 }
 
 .clipping:before,
 .clipping:after {
   content: "";
   position: absolute;
-  width: 28px;
-  height: 28px;
-  top: -14px;
-  transform: rotate(45deg);
+  width: 26px;
+  height: 26px;
   border: 1px solid #000;
   background: var(--paper);
+  top: -14px;
+  transform: rotate(45deg);
 }
 
 .clipping:before {
-  left: 16px
+  left: 12px;
 }
 
 .clipping:after {
-  right: 16px
+  right: 12px;
 }
+
+.carousel .card.clipping {
+  overflow: hidden;
+}
+
+/* keep ornaments inside */
 
 .card {
   display: grid;
@@ -379,7 +318,7 @@ body {
   position: relative;
   overflow: hidden;
   border: 1px solid #000;
-  box-shadow: 3px 3px 0 #0002
+  box-shadow: 3px 3px 0 #0002;
 }
 
 .media img {
@@ -387,7 +326,7 @@ body {
   height: 100%;
   object-fit: cover;
   aspect-ratio: 4/3;
-  filter: grayscale(35%) contrast(110%)
+  filter: grayscale(35%) contrast(110%);
 }
 
 .media:after {
@@ -416,17 +355,17 @@ body {
   bottom: -6px;
   font: 800 clamp(48px, 9vw, 96px) "Alfa Slab One", serif;
   color: #00000010;
-  letter-spacing: .02em
+  letter-spacing: .02em;
 }
 
 .body {
-  padding: 6px 4px
+  padding: 6px 4px;
 }
 
 .meta {
   display: flex;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 .tag {
@@ -437,28 +376,28 @@ body {
   letter-spacing: .06em;
   text-transform: uppercase;
   font-size: .75rem;
-  background: #efe7d6
+  background: #efe7d6;
 }
 
 .meta .rule {
   flex: 1;
   height: 1px;
-  background: repeating-linear-gradient(90deg, #0003 0 6px, transparent 6px 12px)
+  background: repeating-linear-gradient(90deg, #0003 0 6px, transparent 6px 12px);
 }
 
 .title {
   margin: .1em 0 0;
   font: 700 clamp(22px, 2.6vw, 30px) "Alfa Slab One", serif;
-  letter-spacing: .3px
+  letter-spacing: .3px;
 }
 
 .copy {
-  margin: .25em 0 .2em
+  margin: .25em 0 .2em;
 }
 
 .origin {
   margin: .25em 0 0;
-  color: #333
+  color: #333;
 }
 
 .badges {
@@ -466,17 +405,17 @@ body {
   gap: 10px;
   padding: 0;
   margin: .6em 0 0;
-  list-style: none
+  list-style: none;
 }
 
 .badge {
   border: 1px solid #000;
   padding: .2em .5em;
-  font-weight: 700
+  font-weight: 700;
 }
 
-/* --- Prev/Next arrows --- */
-.nav {
+/* Prev/Next arrows (scoped) */
+.carousel .nav {
   position: absolute;
   top: 50%;
   translate: 0 -50%;
@@ -492,19 +431,19 @@ body {
   transition: transform .15s ease;
 }
 
-.nav:hover {
-  transform: translateY(-2px)
+.carousel .nav:hover {
+  transform: translateY(-2px);
 }
 
-.prev {
-  left: 10px
+.carousel .prev {
+  left: 10px;
 }
 
-.next {
-  right: 10px
+.carousel .next {
+  right: 10px;
 }
 
-/* --- Dots --- */
+/* Dots */
 .dots {
   display: flex;
   gap: 10px;
@@ -524,38 +463,26 @@ body {
 }
 
 .dot.is-active {
-  background: #000
+  background: #000;
 }
 
 .dot:focus {
   outline: 2px dotted #000;
-  outline-offset: 3px
+  outline-offset: 3px;
 }
 
-/* --- Responsive --- */
+/* Responsive for cards */
 @media (max-width:900px) {
   .card {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
   }
 
   .media {
-    margin-bottom: 10px
+    margin-bottom: 10px;
   }
 }
 
-
-
-/* origin sotry part */
-
-
-:root {
-  --paper: #f3efe7;
-  --ink: #1a1a1a;
-  --ink-2: #444;
-  --accent: #b0272c;
-  --gold: #c7a969;
-}
-
+/* =============== ORIGIN TRAIL (Punjab → Delhi → Rajasthan → Doncaster) =============== */
 .ot-section {
   padding: 42px 0;
   background: var(--paper);
@@ -570,7 +497,7 @@ body {
 
 .ot-head {
   margin: 0 0 18px 0;
-  text-align: center
+  text-align: center;
 }
 
 .ot-title {
@@ -583,14 +510,14 @@ body {
   margin: .4em auto 0;
   max-width: 920px;
   color: var(--ink-2);
-  font-style: italic
+  font-style: italic;
 }
 
 /* Route ribbon */
 .ot-route {
   list-style: none;
   padding: 14px 12px;
-  margin: 14px auto 26px auto;
+  margin: 14px auto 26px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
@@ -606,23 +533,22 @@ body {
   align-items: center;
   gap: 10px;
   justify-content: center;
-  padding: 8px 0
+  padding: 8px 0;
 }
 
 .ot-route .stop::after {
   content: "";
   position: absolute;
-  right: -5px;
+  right: 0;
   left: calc(50% + 12px);
   height: 2px;
-  background:
-    repeating-linear-gradient(90deg, #000 0 10px, transparent 10px 18px);
+  background: repeating-linear-gradient(90deg, #000 0 10px, transparent 10px 18px);
   top: 50%;
   transform: translateY(-50%);
 }
 
 .ot-route .stop:last-child::after {
-  display: none
+  display: none;
 }
 
 .ot-route .dot {
@@ -636,33 +562,32 @@ body {
 
 .ot-route .label {
   font-weight: 700;
-  letter-spacing: .03em
+  letter-spacing: .03em;
 }
 
 .ot-route .here .dot {
-  background: #000
+  background: #000;
 }
 
-/* Cards grid */
+/* Cards */
 .ot-grid {
   display: grid;
   gap: 22px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-@media (max-width: 960px) {
+@media (max-width:960px) {
   .ot-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width:640px) {
   .ot-grid {
     grid-template-columns: 1fr;
   }
 }
 
-/* Clipping corners (ticket look) */
 .ot-clipping {
   position: relative;
   background: #fff;
@@ -684,16 +609,15 @@ body {
 }
 
 .ot-clipping::before {
-  left: 14px
+  left: 14px;
 }
 
 .ot-clipping::after {
-  right: 14px
+  right: 14px;
 }
 
-/* Card internals */
 .ot-card-hd {
-  margin-bottom: 8px
+  margin-bottom: 8px;
 }
 
 .stamp {
@@ -709,20 +633,20 @@ body {
 
 .ot-card-title {
   margin: .25em 0 0;
-  font: 700 22px "Alfa Slab One", serif
+  font: 700 22px "Alfa Slab One", serif;
 }
 
 .ot-card-sub {
   margin: .2em 0 0;
   color: #333;
-  font-size: .95rem
+  font-size: .95rem;
 }
 
 .ot-media {
-  margin: 10px 0 8px 0;
+  margin: 10px 0 8px;
   border: 1px solid #000;
   box-shadow: 3px 3px 0 #0002;
-  overflow: hidden
+  overflow: hidden;
 }
 
 .ot-media img {
@@ -730,24 +654,24 @@ body {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  filter: grayscale(25%) contrast(108%)
+  filter: grayscale(25%) contrast(108%);
 }
 
 .ot-media figcaption {
   padding: 6px 10px;
   font-size: .85rem;
   background: #faf7ee;
-  border-top: 1px solid #000
+  border-top: 1px solid #000;
 }
 
 .ot-copy {
-  margin: .5em 0 .6em 0
+  margin: .5em 0 .6em;
 }
 
 .ot-dishes {
   list-style: none;
   padding: 0;
-  margin: .4em 0 0 0;
+  margin: .4em 0 0;
   display: grid;
   gap: 6px;
 }
@@ -764,7 +688,7 @@ body {
 }
 
 .ot-then-now {
-  margin: .9em 0 0 0;
+  margin: .9em 0 0;
   display: grid;
   gap: 8px;
 }
@@ -777,14 +701,13 @@ body {
 }
 
 .then {
-  background: #fff
+  background: #fff;
 }
 
 .now {
-  background: #efe7d6
+  background: #efe7d6;
 }
 
-/* Footer line */
 .ot-footer-line {
   margin: 22px 0 0;
   text-align: center;
@@ -792,364 +715,7 @@ body {
   letter-spacing: .02em;
 }
 
-
-/* ---------- Sections ---------- */
-.section {
-  padding: 48px 0
-}
-
-.section-hd h2 {
-  font: 700 clamp(22px, 3.2vw, 36px) "Alfa Slab One", serif;
-  margin: 0;
-  letter-spacing: .5px;
-}
-
-.section-hd .dek {
-  margin: .4em 0 0;
-  color: var(--ink-2);
-  font-style: italic
-}
-
-.clipping {
-  background: #fff;
-  border: 1px solid #000;
-  box-shadow: 6px 6px 0 #0003;
-  padding: 16px;
-  position: relative;
-}
-
-.clipping:before,
-.clipping:after {
-  content: "";
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  border: 1px solid #000;
-  background: var(--paper);
-  top: -14px;
-  transform: rotate(45deg);
-}
-
-.clipping:before {
-  left: 12px
-}
-
-.clipping:after {
-  right: 12px
-}
-
-/* Special of the day */
-.special-card {
-  display: grid;
-  grid-template-columns: minmax(260px, 420px) 1fr;
-  gap: 18px;
-  align-items: stretch
-}
-
-.special-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(40%) contrast(110%)
-}
-
-.special-body h3 {
-  font: 700 24px "Alfa Slab One", serif;
-  margin: .1em 0 .3em
-}
-
-.badges {
-  display: flex;
-  gap: 10px;
-  padding: 0;
-  margin: .6em 0 1em;
-  list-style: none
-}
-
-.badge {
-  border: 1px solid #000;
-  padding: .2em .5em;
-  font-weight: 700
-}
-
-/* Menu */
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 18px
-}
-
-.menu-col h3 {
-  font: 700 18px "Libre Baskerville", serif;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  border-top: 2px solid #000;
-  padding-top: 6px;
-  margin-top: 8px;
-}
-
-.price-list {
-  list-style: none;
-  padding: 0;
-  margin: 8px 0 18px
-}
-
-.price-list li {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  border-bottom: 1px dotted #0003;
-  padding: 6px 0
-}
-
-.price-list li span:last-child {
-  font-weight: 700
-}
-
-.pullquote {
-  margin: 24px 0 0;
-  padding: 12px 16px;
-  border-left: 4px solid var(--accent);
-  font-style: italic;
-  background: #00000005;
-}
-
-/* Eco section */
-
-/* ===== Eco Section Styling (Palm Leaf) ===== */
-.eco.layout-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  align-items: stretch;
-}
-
-.eco-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid #000;
-  box-shadow: 4px 4px 0 #0003;
-}
-
-.eco-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: #fffdf7;
-  padding: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.eco-copy .ticks {
-  list-style: none;
-  padding: 0;
-}
-
-.eco-copy .ticks li {
-  margin: 0.5rem 0;
-  position: relative;
-  padding-left: 1.4em;
-}
-
-.eco-copy .ticks li::before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #0d6b6b;
-  font-weight: bold;
-}
-
-.layout-2 {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 22px;
-  align-items: start
-}
-
-.eco-photo img {
-  width: 100%;
-  height: auto;
-  filter: grayscale(30%) contrast(110%)
-}
-
-.stamp {
-  display: inline-block;
-  padding: .2em .5em;
-  border: 2px solid #000;
-  font-weight: 800;
-  letter-spacing: .1em
-}
-
-/* Reservations */
-.reserve-form {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin-top: 12px
-}
-
-.reserve-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-weight: 700
-}
-
-.reserve-form input,
-.reserve-form textarea {
-  padding: .7em .8em;
-  border: 1px solid #0008;
-  background: #fff;
-  font: inherit
-}
-
-.reserve-form .full {
-  grid-column: 1/-1
-}
-
-.fineprint {
-  grid-column: 1/-1;
-  font-size: .9rem;
-  color: #333;
-  opacity: .8
-}
-
-/* Gallery */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 14px
-}
-
-.gallery-grid figure {
-  margin: 0;
-  position: relative;
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  border: 1px solid #000;
-  box-shadow: 3px 3px 0 #0002
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%);
-  transition: filter .3s ease, transform .3s ease
-}
-
-.gallery-grid figure:before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 6px double #000;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
-
-.gallery-grid img:hover {
-  filter: none;
-  transform: scale(1.03)
-}
-
-/* Footer */
-.footer {
-  margin-top: 28px;
-  padding: 28px 0 34px;
-  background: #efe8d9
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 22px;
-  align-items: start
-}
-
-.footer h4 {
-  margin: .2em 0;
-  font: 700 18px "Alfa Slab One", serif
-}
-
-.footer p {
-  margin: .3em 0
-}
-
-.footer .btn-stamp {
-  margin-top: 6px;
-  background: #fff
-}
-
-.footer .rule {
-  margin: 18px auto 8px
-}
-
-copyright,
-.copyright {
-  text-align: center;
-  font-size: .9rem;
-  color: #333
-}
-
-/* Responsive */
-@media (max-width: 980px) {
-  .special-card {
-    grid-template-columns: 1fr
-  }
-
-  .menu-grid {
-    grid-template-columns: 1fr 1fr
-  }
-
-  .layout-2 {
-    grid-template-columns: 1fr
-  }
-
-  .reserve-form {
-    grid-template-columns: 1fr 1fr
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr
-  }
-}
-
-@media (max-width: 640px) {
-  .menu-grid {
-    grid-template-columns: 1fr
-  }
-
-  .reserve-form {
-    grid-template-columns: 1fr
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr
-  }
-}
-
-
-:root {
-  --paper: #f7f3e8;
-  --ink: #1a1a1a;
-  --ink-2: #444;
-  --accent: #b0272c;
-}
-
-/* Base (safe even if you embed the fragment in a larger page) */
-body {
-  font-family: "Libre Baskerville", Georgia, serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ===== OUR MENU ===== */
+/* =============== MENU (2-column per category) =============== */
 .menu-section {
   margin: 2rem auto;
   max-width: 1180px;
@@ -1169,8 +735,8 @@ body {
   text-align: center;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid #000;
-  padding-bottom: 0.5rem;
-  letter-spacing: 0.02em;
+  padding-bottom: .5rem;
+  letter-spacing: .02em;
 }
 
 .menu-intro {
@@ -1180,32 +746,28 @@ body {
 .menu-subheading {
   font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: .05em;
   margin: 0;
 }
 
 .menu-intro p {
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
+  margin-top: .5rem;
+  font-size: .95rem;
   color: var(--ink-2);
 }
 
-/* Turn category items into a 2-column grid */
 .menu-category {
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  /* spacing between items */
 }
 
-/* Make the heading span across both columns */
 .menu-category>.category-heading {
   grid-column: 1 / -1;
 }
 
-/* Responsive: go back to 1 column on smaller screens */
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .menu-category {
     grid-template-columns: 1fr;
   }
@@ -1216,42 +778,48 @@ body {
   font-size: 1.5rem;
   border-bottom: 1px solid #000;
   margin-bottom: 1rem;
-  padding-bottom: 0.4rem;
+  padding-bottom: .4rem;
 }
 
-/* Items */
+/* Items + safe dotted leaders (no overflow) */
 .menu-item {
   margin-bottom: 1rem;
 }
 
 .item-header {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 12px;
-  align-items: end;
-  margin-bottom: 0.25rem;
+  align-items: baseline;
+  margin-bottom: .25rem;
 }
 
-/* Name + dotted leader */
-.item-header h4 {
-  font-weight: 700;
-  margin: 0;
-  position: relative;
-  padding-right: 0.5rem;
-}
-
-/* Dotted leader that fills the space between title and price */
-.item-header h4::after {
+.item-header::before {
   content: "";
   position: absolute;
   left: 0;
-  right: -9999px;
-  /* push far to the right */
-  bottom: 0.35rem;
-  /* visually sit on baseline */
-  transform: translateX(100%);
-  /* start after text */
-  border-bottom: 1px dotted #0006;
+  right: 0;
+  bottom: .4rem;
+  height: 1px;
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.item-header h4,
+.item-header span {
+  position: relative;
+  z-index: 1;
+  background: var(--paper, #fffdf0);
+  padding: 0 .25rem;
+}
+
+.item-header h4 {
+  font-weight: 700;
+  margin: 0;
 }
 
 .item-header span {
@@ -1261,20 +829,19 @@ body {
 
 .menu-item p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: .95rem;
 }
 
-/* Legend & quote */
 .menu-legend {
   margin-top: 2rem;
   padding-top: 1rem;
   border-top: 1px solid #000;
-  font-size: 0.92rem;
+  font-size: .92rem;
   color: var(--ink-2);
 }
 
 .menu-legend p {
-  margin: 0.75rem 0;
+  margin: .75rem 0;
   text-align: center;
 }
 
@@ -1286,8 +853,7 @@ body {
   background: #00000010;
 }
 
-/* Responsive */
-@media (max-width: 720px) {
+@media (max-width:720px) {
   .menu-container {
     padding: 1.25rem;
   }
@@ -1299,16 +865,10 @@ body {
   .category-heading {
     font-size: 1.35rem;
   }
-
-  .item-header h4::after {
-    bottom: 0.25rem;
-  }
 }
 
-/* ===== Bollywood-style Map ===== */
+/* =============== MAP / MARQUEE =============== */
 .map-section {
-  /* subtle film-poster vibe on paper */
-  /* background: var(--paper); */
   padding-bottom: 56px;
 }
 
@@ -1328,14 +888,12 @@ body {
   color: #fff;
   border: 3px solid #000;
   border-radius: 999px 999px 0 0 / 80px 80px 0 0;
-  /* cinema arch */
   font: 700 clamp(18px, 2.6vw, 28px) "Alfa Slab One", serif;
   letter-spacing: .06em;
   text-shadow: 0 1px 0 #0006;
   position: relative;
 }
 
-/* tiny bulbs along the arch edge */
 .arch-title::after {
   content: "";
   position: absolute;
@@ -1343,8 +901,7 @@ body {
   right: 8px;
   bottom: -10px;
   height: 10px;
-  background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/20px 10px repeat-x;
+  background: radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/20px 10px repeat-x;
 }
 
 .arch-sub {
@@ -1353,7 +910,6 @@ body {
   color: var(--ink);
 }
 
-/* Framed map with marquee bulbs */
 .cinema-frame {
   position: relative;
   width: min(980px, 100%);
@@ -1365,7 +921,6 @@ body {
   overflow: hidden;
 }
 
-/* top + bottom bulb rows */
 .cinema-frame::before,
 .cinema-frame::after {
   content: "";
@@ -1373,8 +928,7 @@ body {
   left: -8px;
   right: -8px;
   height: 20px;
-  background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-x;
+  background: radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-x;
   pointer-events: none;
 }
 
@@ -1387,14 +941,12 @@ body {
   transform: scaleY(-1);
 }
 
-/* side bulb strips (extra spans in HTML) */
 .bulbs.v {
   position: absolute;
   top: -8px;
   bottom: -8px;
   width: 20px;
-  background:
-    radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-y;
+  background: radial-gradient(circle, #ffd875 40%, #c79a2b 41% 62%, transparent 63%) 0 0/24px 24px repeat-y;
   pointer-events: none;
 }
 
@@ -1411,7 +963,6 @@ body {
   width: 100%;
   aspect-ratio: 16/9;
   border: 0;
-  /* keep your gritty newspaper look, sharpen on hover */
   filter: grayscale(40%) contrast(110%) saturate(90%);
 }
 
@@ -1425,18 +976,15 @@ body {
   color: var(--ink-2);
 }
 
-/* ===== Sustainability (two columns) ===== */
+/* =============== PALM-LEAF SUSTAINABILITY (two columns) =============== */
 #palm .eco-twocol {
   display: grid;
   grid-template-columns: minmax(300px, 560px) 1fr;
-  /* video not too big */
   gap: 18px;
   align-items: start;
   padding: 16px;
-  /* matches clipping cards */
 }
 
-/* label row spans both columns */
 #palm .eco-twocol .film-hd {
   grid-column: 1 / -1;
   display: inline-block;
@@ -1449,10 +997,8 @@ body {
   text-transform: uppercase;
 }
 
-/* left column */
 #palm .eco-twocol .eco-media {
   max-width: 560px;
-  /* keep the video container modest */
 }
 
 #palm .eco-twocol .eco-video-player {
@@ -1474,7 +1020,6 @@ body {
   color: #444;
 }
 
-/* right column */
 #palm .eco-twocol .eco-copy {
   margin-top: 2px;
 }
@@ -1496,12 +1041,11 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--accent-2, #0d6b6b);
+  color: var(--accent-2);
   font-weight: 800;
 }
 
-/* responsive: stack on small screens */
-@media (max-width: 860px) {
+@media (max-width:860px) {
   #palm .eco-twocol {
     grid-template-columns: 1fr;
   }
@@ -1511,4 +1055,154 @@ body {
   }
 }
 
-/* mobile: nothing special—video scales and points flow naturally */
+/* =============== RESERVATIONS =============== */
+.reserve-form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.reserve-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.reserve-form input,
+.reserve-form textarea {
+  padding: .7em .8em;
+  border: 1px solid #0008;
+  background: #fff;
+  font: inherit;
+}
+
+.reserve-form .full {
+  grid-column: 1 / -1;
+}
+
+.fineprint {
+  grid-column: 1 / -1;
+  font-size: .9rem;
+  color: #333;
+  opacity: .8;
+}
+
+/* =============== GALLERY =============== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.gallery-grid figure {
+  margin: 0;
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 1px solid #000;
+  box-shadow: 3px 3px 0 #0002;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: filter .3s ease, transform .3s ease;
+}
+
+.gallery-grid figure:before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 6px double #000;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.gallery-grid img:hover {
+  filter: none;
+  transform: scale(1.03);
+}
+
+/* =============== FOOTER =============== */
+.footer {
+  margin-top: 28px;
+  padding: 28px 0 34px;
+  background: #efe8d9;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.footer h4 {
+  margin: .2em 0;
+  font: 700 18px "Alfa Slab One", serif;
+}
+
+.footer p {
+  margin: .3em 0;
+}
+
+.footer .btn-stamp {
+  margin-top: 6px;
+  background: #fff;
+}
+
+.footer .rule {
+  margin: 18px auto 8px;
+}
+
+copyright,
+.copyright {
+  text-align: center;
+  font-size: .9rem;
+  color: #333;
+}
+
+/* =============== RESPONSIVE LAYOUT ADJUSTMENTS =============== */
+@media (max-width:980px) {
+  .special-card {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .layout-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .reserve-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width:640px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reserve-form {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============== OPTIONAL: make the autoplay video purely visual =============== */
+/* .eco-video-player{ pointer-events:none; } */
