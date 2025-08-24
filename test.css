@@ -1308,9 +1308,7 @@ body {
 /* ===== Bollywood-style Map ===== */
 .map-section {
   /* subtle film-poster vibe on paper */
-  background: var(--paper);
-    
-    var(--paper);
+  /* background: var(--paper); */
   padding-bottom: 56px;
 }
 
@@ -1427,15 +1425,20 @@ body {
   color: var(--ink-2);
 }
 
-/* ===== Sustainability (single container) ===== */
-#palm .eco-onecol {
+/* ===== Sustainability (two columns) ===== */
+#palm .eco-twocol {
   display: grid;
-  grid-template-rows: auto auto;
-  gap: 12px;
-  padding: 16px;                    /* matches your clipping cards */
+  grid-template-columns: minmax(300px, 560px) 1fr;
+  /* video not too big */
+  gap: 18px;
+  align-items: start;
+  padding: 16px;
+  /* matches clipping cards */
 }
 
-#palm .eco-onecol .film-hd {
+/* label row spans both columns */
+#palm .eco-twocol .film-hd {
+  grid-column: 1 / -1;
   display: inline-block;
   margin: 2px 0 6px;
   background: #efe7d6;
@@ -1446,7 +1449,13 @@ body {
   text-transform: uppercase;
 }
 
-#palm .eco-onecol .eco-video-player {
+/* left column */
+#palm .eco-twocol .eco-media {
+  max-width: 560px;
+  /* keep the video container modest */
+}
+
+#palm .eco-twocol .eco-video-player {
   width: 100%;
   aspect-ratio: 16/9;
   border: 1px solid #000;
@@ -1454,20 +1463,52 @@ body {
   background: #000;
   filter: grayscale(25%) contrast(108%);
 }
-#palm .eco-onecol .eco-video-player:hover { filter: none; }
 
-/* text + ticks block */
-#palm .eco-onecol .eco-body { margin-top: 2px; }
-#palm .eco-onecol .ticks { list-style: none; padding: 0; margin: 8px 0 0; }
-#palm .eco-onecol .ticks li {
+#palm .eco-twocol .eco-video-player:hover {
+  filter: none;
+}
+
+#palm .eco-twocol .eco-caption {
+  margin: .5rem 0 0;
+  font-size: .9rem;
+  color: #444;
+}
+
+/* right column */
+#palm .eco-twocol .eco-copy {
+  margin-top: 2px;
+}
+
+#palm .eco-twocol .ticks {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+#palm .eco-twocol .ticks li {
   margin: .45rem 0;
   padding-left: 1.4em;
   position: relative;
 }
-#palm .eco-onecol .ticks li::before {
+
+#palm .eco-twocol .ticks li::before {
   content: "✓";
-  position: absolute; left: 0; top: 0;
-  color: var(--accent-2); font-weight: 800;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-2, #0d6b6b);
+  font-weight: 800;
+}
+
+/* responsive: stack on small screens */
+@media (max-width: 860px) {
+  #palm .eco-twocol {
+    grid-template-columns: 1fr;
+  }
+
+  #palm .eco-twocol .eco-media {
+    max-width: 100%;
+  }
 }
 
 /* mobile: nothing special—video scales and points flow naturally */
