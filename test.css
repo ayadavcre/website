@@ -966,7 +966,7 @@ video {
   filter: grayscale(40%) contrast(110%) saturate(90%);
 }
 
-.map-embed:hover {
+.map-embed {
   filter: none;
 }
 
