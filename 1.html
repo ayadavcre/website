@@ -1,0 +1,1524 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserve Table - Vintage Bollywood Style</title>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&amp;family=Playfair+Display:wght@400;700&amp;family=Dancing+Script:wght@400;700&amp;family=Cinzel:wght@400;600&amp;display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B4513',
+            secondary: '#DAA520'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    .floating-posters {
+      position: absolute;
+      width: 120px;
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .floating-posters:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .pattern-1 .floating-posters {
+      transform: rotate(-5deg);
+      filter: sepia(0.3);
+    }
+
+    .pattern-2 .floating-posters {
+      transform: rotate(3deg);
+      filter: brightness(1.1) contrast(1.1);
+    }
+
+    .pattern-3 .floating-posters {
+      filter: saturate(1.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .pattern-4 .floating-posters {
+      transform: perspective(1000px) rotateY(10deg);
+      filter: contrast(1.1);
+    }
+
+    .pattern-5 .floating-posters {
+      transform: skew(-2deg);
+      filter: brightness(1.2);
+    }
+
+    .pattern-6 .floating-posters {
+      transform: rotate(-8deg) scale(0.95);
+      filter: sepia(0.2) brightness(1.1);
+    }
+
+    .pattern-7 .floating-posters {
+      transform: perspective(1000px) rotateX(5deg);
+      filter: contrast(1.2) brightness(1.1);
+    }
+
+    .pattern-8 .floating-posters {
+      transform: rotate(5deg) scale(0.9);
+      filter: saturate(1.3);
+    }
+
+    .pattern-9 .floating-posters {
+      transform: skew(3deg) rotate(-3deg);
+      filter: brightness(1.15) contrast(1.05);
+    }
+
+    .pattern-10 .floating-posters {
+      transform: perspective(1000px) rotateY(-8deg);
+      filter: sepia(0.1) brightness(1.2);
+    }
+
+    .vintage-pattern-1 {
+      background: linear-gradient(135deg, #8B4513 0%, #DAA520 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pattern-1 {
+      background: linear-gradient(135deg, #8B4513 0%, #DAA520 100%);
+    }
+
+    .pattern-2 {
+      background: linear-gradient(45deg, #CD853F 0%, #B8860B 100%);
+    }
+
+    .pattern-3 {
+      background: linear-gradient(180deg, #D2691E 0%, #DAA520 100%);
+    }
+
+    .pattern-4 {
+      background: linear-gradient(90deg, #8B4513 0%, #CD853F 100%);
+    }
+
+    .pattern-5 {
+      background: linear-gradient(135deg, #A0522D 0%, #DAA520 100%);
+    }
+
+    .pattern-6 {
+      background: linear-gradient(45deg, #8B4513 0%, #B8860B 100%);
+    }
+
+    .pattern-7 {
+      background: linear-gradient(180deg, #A0522D 0%, #DAA520 100%);
+    }
+
+    .pattern-8 {
+      background: linear-gradient(90deg, #D2691E 0%, #CD853F 100%);
+    }
+
+    .pattern-9 {
+      background: linear-gradient(135deg, #CD853F 0%, #B8860B 100%);
+    }
+
+    .pattern-10 {
+      background: linear-gradient(45deg, #A0522D 0%, #CD853F 100%);
+    }
+
+    #poster1 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20DDLJ%20Shah%20Rukh%20Khan%20Kajol%20romantic%20scene%20with%20mustard%20fields%2C%20iconic%20pose%2C%20vintage%20film%20poster%20style%2C%20dramatic%20lighting&width=240&height=320&seq=11&orientation=portrait");
+    }
+
+    #poster2 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Hum%20Aapke%20Hain%20Koun%20Salman%20Khan%20Madhuri%20Dixit%2C%20traditional%20Indian%20wedding%20scene%2C%20vibrant%20colors%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=12&orientation=portrait");
+    }
+
+    #poster3 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Kuch%20Kuch%20Hota%20Hai%20college%20scene%2C%20youthful%20romance%2C%20colorful%20campus%20setting%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=13&orientation=portrait");
+    }
+
+    #poster4 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Andaz%20Apna%20Apna%20comedy%20scene%2C%20quirky%20characters%2C%20bright%20colors%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=14&orientation=portrait");
+    }
+
+    #poster5 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Raja%20Hindustani%20romantic%20rain%20scene%2C%20dramatic%20lighting%2C%20mountain%20backdrop%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=15&orientation=portrait");
+    }
+
+    #poster6 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Rangeela%20colorful%20dance%20sequence%2C%20vibrant%20costumes%2C%20urban%20setting%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=16&orientation=portrait");
+    }
+
+    #poster7 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Dil%20To%20Pagal%20Hai%20dance%20studio%20scene%2C%20modern%20romance%2C%20artistic%20setting%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=17&orientation=portrait");
+    }
+
+    #poster8 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20movie%20poster%20Border%20patriotic%20scene%2C%20dramatic%20army%20backdrop%2C%20intense%20emotions%2C%20vintage%20film%20poster%20style&width=240&height=320&seq=18&orientation=portrait");
+    }
+
+    .vintage-pattern-1 {
+      background: linear-gradient(135deg, #8B4513 0%, #DAA520 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vintage-pattern-2 {
+      background-image: url("https://readdy.ai/api/search-image?query=Classic%2090s%20Bollywood%20action%20movie%20poster%2C%20dramatic%20hero%20pose%20with%20intense%20expression%2C%20dynamic%20action%20scene%20with%20explosions%20and%20fire%20effects%2C%20bold%20typography%2C%20vintage%20color%20grading%20with%20warm%20tones%2C%20film%20grain%20overlay%2C%20dramatic%20lighting&width=1920&height=1080&seq=2&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .vintage-pattern-2::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(139, 0, 0, 0.85), rgba(0, 0, 0, 0.7));
+      mix-blend-mode: multiply;
+    }
+
+    .vintage-pattern-3 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20romantic%20musical%20poster%2C%20colorful%20dance%20sequence%20with%20multiple%20dancers%20in%20traditional%20costumes%2C%20dreamy%20soft%20focus%20effect%2C%20vibrant%20colors%20with%20disco%20lighting%20effects%2C%20ornate%20decorative%20borders%2C%20vintage%20film%20texture&width=1920&height=1080&seq=3&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .vintage-pattern-3::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(128, 0, 128, 0.8), rgba(0, 0, 139, 0.7));
+      mix-blend-mode: soft-light;
+    }
+
+    .vintage-pattern-4 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20family%20drama%20movie%20poster%2C%20emotional%20scene%20with%20family%20members%2C%20rich%20traditional%20Indian%20setting%2C%20warm%20color%20palette%20with%20golden%20hour%20lighting%2C%20vintage%20film%20grain%2C%20decorative%20borders%20with%20traditional%20motifs&width=1920&height=1080&seq=4&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .vintage-pattern-4::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(205, 133, 63, 0.85), rgba(160, 82, 45, 0.7));
+      mix-blend-mode: overlay;
+    }
+
+    .vintage-pattern-5 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20comedy%20movie%20poster%2C%20funny%20scene%20with%20multiple%20characters%2C%20bright%20and%20colorful%20setting%2C%20exaggerated%20expressions%2C%20retro%20graphic%20elements%2C%20vintage%20color%20treatment%20with%20vibrant%20hues%2C%20film%20texture%20overlay&width=1920&height=1080&seq=5&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .vintage-pattern-5::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(0, 0, 0, 0.75), rgba(218, 165, 32, 0.6));
+      mix-blend-mode: overlay;
+    }
+
+    .vintage-pattern-6 {
+      background-image: url("https://readdy.ai/api/search-image?query=90s%20Bollywood%20thriller%20movie%20poster%2C%20mysterious%20scene%20with%20dramatic%20shadows%2C%20intense%20close-up%20of%20characters%2C%20moody%20lighting%20with%20film%20noir%20style%2C%20vintage%20color%20grading%2C%20textured%20overlay%20with%20film%20grain&width=1920&height=1080&seq=6&orientation=landscape");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .vintage-pattern-6::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(139, 69, 19, 0.8), rgba(0, 0, 0, 0.7));
+      mix-blend-mode: multiply;
+    }
+
+    .film-grain {
+      position: relative;
+    }
+
+    .film-grain::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%);
+      background-size: 100px 100px, 120px 120px, 80px 80px;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .ornate-border {
+      border: 4px solid;
+      border-image: linear-gradient(45deg, #DAA520, #8B4513, #DAA520, #8B4513) 1;
+      position: relative;
+    }
+
+    .ornate-border::before,
+    .ornate-border::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #DAA520;
+    }
+
+    .ornate-border::before {
+      top: -6px;
+      left: -6px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .ornate-border::after {
+      bottom: -6px;
+      right: -6px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .disco-shimmer {
+      background: linear-gradient(45deg, #FFD700, #FF1493, #00BFFF, #FFD700);
+      background-size: 400% 400%;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .paper-texture {
+      background-color: #F5F5DC;
+      background-image:
+        radial-gradient(circle at 100% 50%, transparent 20%, rgba(255, 255, 255, 0.3) 21%, rgba(255, 255, 255, 0.3) 34%, transparent 35%, transparent),
+        linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05) 76%, transparent 77%, transparent);
+    }
+
+    .torn-edge {
+      position: relative;
+    }
+
+    .torn-edge::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: repeating-linear-gradient(90deg, transparent 0px, transparent 5px, #8B4513 5px, #8B4513 10px);
+      opacity: 0.3;
+    }
+  </style>
+  <script>(function () {
+        // 存储收集到的错误
+        const errorList = [];
+
+        // 根据错误类型生成提示词
+        // 阻止 eslint 监测
+        /* eslint-disable */
+        const getPromptByErrorType = (errorInfo) => {
+          const basePrompt = `我遇到了以下 JavaScript 错误，请帮我分析并修复：\n\n错误信息：${errorInfo.message}\n错误类型：${errorInfo.errorType}\n错误位置：第 ${errorInfo.lineNumber} 行，第 ${errorInfo.columnNumber} 列\n`;
+
+          let specificPrompt = '';
+          switch (errorInfo.errorType) {
+            case 'ReferenceError':
+              specificPrompt = `\n这是一个引用错误，看起来是访问了未定义的变量或对象。\n请帮我：\n1. 检查变量是否已定义\n2. 检查变量名是否拼写正确\n3. 检查变量的作用域是否正确\n4. 提供修复后的代码`;
+              break;
+
+            case 'TypeError':
+              specificPrompt = `\n这是一个类型错误，可能是对错误类型的值进行了操作。\n请帮我：\n1. 检查变量的类型是否正确\n2. 检查是否对 null 或 undefined 进行了操作\n3. 检查方法调用是否正确\n4. 提供修复后的代码`;
+              break;
+
+            case 'SyntaxError':
+              specificPrompt = `\n这是一个语法错误，代码可能存在语法问题。\n请帮我：\n1. 检查代码语法是否正确\n2. 检查括号、引号是否配对\n3. 检查语句是否完整\n4. 提供修复后的代码`;
+              break;
+
+            case 'RangeError':
+              specificPrompt = `\n这是一个范围错误，可能是数组越界或数值超出范围。\n请帮我：\n1. 检查数组索引是否越界\n2. 检查数值是否在有效范围内\n3. 检查递归是否可能导致栈溢出\n4. 提供修复后的代码`;
+              break;
+
+            default:
+              specificPrompt = `\n请帮我：\n1. 分析这个错误的原因\n2. 提供修复方案\n3. 解释修复后的代码如何避免类似错误`;
+          }
+
+          return basePrompt + specificPrompt;
+        };
+
+        // 监听页面 error 事件
+        window.addEventListener(
+          'error',
+          (event) => {
+            const errorInfo = {
+              message: event.message,
+              type: event.error ? event.error.name : 'UnknownError',
+              lineNumber: event.lineno,
+              columnNumber: event.colno
+            };
+
+            // errorInfo.prompt = getPromptByErrorType(errorInfo);
+            errorList.push(errorInfo);
+          },
+          true
+        );
+
+        const reportError = () => {
+          setTimeout(() => {
+            if (errorList.length > 0) {
+              window.parent.postMessage(
+                {
+                  type: 'iframe-errors',
+                  errors: errorList,
+                  recordId: window.frameElement?.getAttribute('data-record-id')
+                },
+                '*'
+              );
+            }
+          }, 1000);
+        };
+        if (document.readyState === 'complete') {
+          reportError();
+        } else {
+          window.addEventListener('load', () => {
+            reportError();
+          });
+        }
+      })();
+  </script>
+  <style>
+    *,
+    ::before,
+    ::after {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    ::backdrop {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-rotate: 0;
+      --tw-skew-x: 0;
+      --tw-skew-y: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-pan-x: ;
+      --tw-pan-y: ;
+      --tw-pinch-zoom: ;
+      --tw-scroll-snap-strictness: proximity;
+      --tw-gradient-from-position: ;
+      --tw-gradient-via-position: ;
+      --tw-gradient-to-position: ;
+      --tw-ordinal: ;
+      --tw-slashed-zero: ;
+      --tw-numeric-figure: ;
+      --tw-numeric-spacing: ;
+      --tw-numeric-fraction: ;
+      --tw-ring-inset: ;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-color: rgb(59 130 246 / 0.5);
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-colored: 0 0 #0000;
+      --tw-blur: ;
+      --tw-brightness: ;
+      --tw-contrast: ;
+      --tw-grayscale: ;
+      --tw-hue-rotate: ;
+      --tw-invert: ;
+      --tw-saturate: ;
+      --tw-sepia: ;
+      --tw-drop-shadow: ;
+      --tw-backdrop-blur: ;
+      --tw-backdrop-brightness: ;
+      --tw-backdrop-contrast: ;
+      --tw-backdrop-grayscale: ;
+      --tw-backdrop-hue-rotate: ;
+      --tw-backdrop-invert: ;
+      --tw-backdrop-opacity: ;
+      --tw-backdrop-saturate: ;
+      --tw-backdrop-sepia: ;
+      --tw-contain-size: ;
+      --tw-contain-layout: ;
+      --tw-contain-paint: ;
+      --tw-contain-style:
+    }
+
+    /* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+      border-width: 0;
+      border-style: solid;
+      border-color: #e5e7eb
+    }
+
+    ::after,
+    ::before {
+      --tw-content: ''
+    }
+
+    :host,
+    html {
+      line-height: 1.5;
+      -webkit-text-size-adjust: 100%;
+      -moz-tab-size: 4;
+      tab-size: 4;
+      font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    body {
+      margin: 0;
+      line-height: inherit
+    }
+
+    hr {
+      height: 0;
+      color: inherit;
+      border-top-width: 1px
+    }
+
+    abbr:where([title]) {
+      -webkit-text-decoration: underline dotted;
+      text-decoration: underline dotted
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      font-weight: inherit
+    }
+
+    a {
+      color: inherit;
+      text-decoration: inherit
+    }
+
+    b,
+    strong {
+      font-weight: bolder
+    }
+
+    code,
+    kbd,
+    pre,
+    samp {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-feature-settings: normal;
+      font-variation-settings: normal;
+      font-size: 1em
+    }
+
+    small {
+      font-size: 80%
+    }
+
+    sub,
+    sup {
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline
+    }
+
+    sub {
+      bottom: -.25em
+    }
+
+    sup {
+      top: -.5em
+    }
+
+    table {
+      text-indent: 0;
+      border-color: inherit;
+      border-collapse: collapse
+    }
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+      font-family: inherit;
+      font-feature-settings: inherit;
+      font-variation-settings: inherit;
+      font-size: 100%;
+      font-weight: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0
+    }
+
+    button,
+    select {
+      text-transform: none
+    }
+
+    button,
+    input:where([type=button]),
+    input:where([type=reset]),
+    input:where([type=submit]) {
+      -webkit-appearance: button;
+      background-color: transparent;
+      background-image: none
+    }
+
+    :-moz-focusring {
+      outline: auto
+    }
+
+    :-moz-ui-invalid {
+      box-shadow: none
+    }
+
+    progress {
+      vertical-align: baseline
+    }
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+      height: auto
+    }
+
+    [type=search] {
+      -webkit-appearance: textfield;
+      outline-offset: -2px
+    }
+
+    ::-webkit-search-decoration {
+      -webkit-appearance: none
+    }
+
+    ::-webkit-file-upload-button {
+      -webkit-appearance: button;
+      font: inherit
+    }
+
+    summary {
+      display: list-item
+    }
+
+    blockquote,
+    dd,
+    dl,
+    figure,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    p,
+    pre {
+      margin: 0
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 0
+    }
+
+    legend {
+      padding: 0
+    }
+
+    menu,
+    ol,
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0
+    }
+
+    dialog {
+      padding: 0
+    }
+
+    textarea {
+      resize: vertical
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      opacity: 1;
+      color: #9ca3af
+    }
+
+    [role=button],
+    button {
+      cursor: pointer
+    }
+
+    :disabled {
+      cursor: default
+    }
+
+    audio,
+    canvas,
+    embed,
+    iframe,
+    img,
+    object,
+    svg,
+    video {
+      display: block;
+      vertical-align: middle
+    }
+
+    img,
+    video {
+      max-width: 100%;
+      height: auto
+    }
+
+    [hidden]:where(:not([hidden=until-found])) {
+      display: none
+    }
+
+    .absolute {
+      position: absolute
+    }
+
+    .relative {
+      position: relative
+    }
+
+    .inset-0 {
+      inset: 0px
+    }
+
+    .z-10 {
+      z-index: 10
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .mb-2 {
+      margin-bottom: 0.5rem
+    }
+
+    .mb-6 {
+      margin-bottom: 1.5rem
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem
+    }
+
+    .mt-4 {
+      margin-top: 1rem
+    }
+
+    .block {
+      display: block
+    }
+
+    .flex {
+      display: flex
+    }
+
+    .grid {
+      display: grid
+    }
+
+    .h-24 {
+      height: 6rem
+    }
+
+    .h-5 {
+      height: 1.25rem
+    }
+
+    .min-h-screen {
+      min-height: 100vh
+    }
+
+    .w-5 {
+      width: 1.25rem
+    }
+
+    .w-full {
+      width: 100%
+    }
+
+    .max-w-2xl {
+      max-width: 42rem
+    }
+
+    .max-w-7xl {
+      max-width: 80rem
+    }
+
+    .resize-none {
+      resize: none
+    }
+
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr))
+    }
+
+    .items-center {
+      align-items: center
+    }
+
+    .justify-center {
+      justify-content: center
+    }
+
+    .justify-between {
+      justify-content: space-between
+    }
+
+    .gap-6 {
+      gap: 1.5rem
+    }
+
+    .space-y-12> :not([hidden])~ :not([hidden]) {
+      --tw-space-y-reverse: 0;
+      margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse)));
+      margin-bottom: calc(3rem * var(--tw-space-y-reverse))
+    }
+
+    .overflow-hidden {
+      overflow: hidden
+    }
+
+    .whitespace-nowrap {
+      white-space: nowrap
+    }
+
+    .\!rounded-button {
+      border-radius: 8px !important
+    }
+
+    .rounded-2xl {
+      border-radius: 24px
+    }
+
+    .rounded-button {
+      border-radius: 8px
+    }
+
+    .rounded-lg {
+      border-radius: 16px
+    }
+
+    .rounded-md {
+      border-radius: 12px
+    }
+
+    .rounded-none {
+      border-radius: 0px
+    }
+
+    .rounded-sm {
+      border-radius: 4px
+    }
+
+    .rounded-xl {
+      border-radius: 20px
+    }
+
+    .border {
+      border-width: 1px
+    }
+
+    .border-2 {
+      border-width: 2px
+    }
+
+    .border-pink-400\/50 {
+      border-color: rgb(244 114 182 / 0.5)
+    }
+
+    .border-primary\/30 {
+      border-color: rgb(139 69 19 / 0.3)
+    }
+
+    .border-red-400\/50 {
+      border-color: rgb(248 113 113 / 0.5)
+    }
+
+    .border-secondary\/30 {
+      border-color: rgb(218 165 32 / 0.3)
+    }
+
+    .border-yellow-400\/30 {
+      border-color: rgb(250 204 21 / 0.3)
+    }
+
+    .border-yellow-500\/30 {
+      border-color: rgb(234 179 8 / 0.3)
+    }
+
+    .bg-gray-50 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-primary {
+      --tw-bg-opacity: 1;
+      background-color: rgb(139 69 19 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-red-600 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-slate-100\/95 {
+      background-color: rgb(241 245 249 / 0.95)
+    }
+
+    .bg-white {
+      --tw-bg-opacity: 1;
+      background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-white\/80 {
+      background-color: rgb(255 255 255 / 0.8)
+    }
+
+    .bg-white\/90 {
+      background-color: rgb(255 255 255 / 0.9)
+    }
+
+    .bg-white\/95 {
+      background-color: rgb(255 255 255 / 0.95)
+    }
+
+    .bg-yellow-50\/90 {
+      background-color: rgb(254 252 232 / 0.9)
+    }
+
+    .bg-yellow-500 {
+      --tw-bg-opacity: 1;
+      background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1))
+    }
+
+    .bg-gradient-to-br {
+      background-image: linear-gradient(to bottom right, var(--tw-gradient-stops))
+    }
+
+    .bg-gradient-to-r {
+      background-image: linear-gradient(to right, var(--tw-gradient-stops))
+    }
+
+    .from-orange-200 {
+      --tw-gradient-from: #fed7aa var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(254 215 170 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-pink-500 {
+      --tw-gradient-from: #ec4899 var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(236 72 153 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-purple-900 {
+      --tw-gradient-from: #581c87 var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(88 28 135 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-red-900 {
+      --tw-gradient-from: #7f1d1d var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(127 29 29 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-red-900\/50 {
+      --tw-gradient-from: rgb(127 29 29 / 0.5) var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(127 29 29 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-slate-800 {
+      --tw-gradient-from: #1e293b var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(30 41 59 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .from-yellow-500\/10 {
+      --tw-gradient-from: rgb(234 179 8 / 0.1) var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(234 179 8 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .via-pink-800 {
+      --tw-gradient-to: rgb(157 23 77 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), #9d174d var(--tw-gradient-via-position), var(--tw-gradient-to)
+    }
+
+    .to-blue-900 {
+      --tw-gradient-to: #1e3a8a var(--tw-gradient-to-position)
+    }
+
+    .to-red-200 {
+      --tw-gradient-to: #fecaca var(--tw-gradient-to-position)
+    }
+
+    .to-red-800 {
+      --tw-gradient-to: #991b1b var(--tw-gradient-to-position)
+    }
+
+    .to-slate-900 {
+      --tw-gradient-to: #0f172a var(--tw-gradient-to-position)
+    }
+
+    .to-transparent {
+      --tw-gradient-to: transparent var(--tw-gradient-to-position)
+    }
+
+    .to-yellow-500 {
+      --tw-gradient-to: #eab308 var(--tw-gradient-to-position)
+    }
+
+    .p-8 {
+      padding: 2rem
+    }
+
+    .px-4 {
+      padding-left: 1rem;
+      padding-right: 1rem
+    }
+
+    .py-3 {
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem
+    }
+
+    .py-4 {
+      padding-top: 1rem;
+      padding-bottom: 1rem
+    }
+
+    .py-8 {
+      padding-top: 2rem;
+      padding-bottom: 2rem
+    }
+
+    .text-left {
+      text-align: left
+    }
+
+    .text-center {
+      text-align: center
+    }
+
+    .text-4xl {
+      font-size: 2.25rem;
+      line-height: 2.5rem
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+      line-height: 1.75rem
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.25rem
+    }
+
+    .font-bold {
+      font-weight: 700
+    }
+
+    .font-semibold {
+      font-weight: 600
+    }
+
+    .italic {
+      font-style: italic
+    }
+
+    .text-pink-200 {
+      --tw-text-opacity: 1;
+      color: rgb(251 207 232 / var(--tw-text-opacity, 1))
+    }
+
+    .text-pink-200\/80 {
+      color: rgb(251 207 232 / 0.8)
+    }
+
+    .text-primary {
+      --tw-text-opacity: 1;
+      color: rgb(139 69 19 / var(--tw-text-opacity, 1))
+    }
+
+    .text-primary\/60 {
+      color: rgb(139 69 19 / 0.6)
+    }
+
+    .text-primary\/80 {
+      color: rgb(139 69 19 / 0.8)
+    }
+
+    .text-purple-900 {
+      --tw-text-opacity: 1;
+      color: rgb(88 28 135 / var(--tw-text-opacity, 1))
+    }
+
+    .text-red-700 {
+      --tw-text-opacity: 1;
+      color: rgb(185 28 28 / var(--tw-text-opacity, 1))
+    }
+
+    .text-red-700\/80 {
+      color: rgb(185 28 28 / 0.8)
+    }
+
+    .text-red-800 {
+      --tw-text-opacity: 1;
+      color: rgb(153 27 27 / var(--tw-text-opacity, 1))
+    }
+
+    .text-red-900 {
+      --tw-text-opacity: 1;
+      color: rgb(127 29 29 / var(--tw-text-opacity, 1))
+    }
+
+    .text-slate-800 {
+      --tw-text-opacity: 1;
+      color: rgb(30 41 59 / var(--tw-text-opacity, 1))
+    }
+
+    .text-slate-900 {
+      --tw-text-opacity: 1;
+      color: rgb(15 23 42 / var(--tw-text-opacity, 1))
+    }
+
+    .text-white {
+      --tw-text-opacity: 1;
+      color: rgb(255 255 255 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-200 {
+      --tw-text-opacity: 1;
+      color: rgb(254 240 138 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-200\/80 {
+      color: rgb(254 240 138 / 0.8)
+    }
+
+    .text-yellow-300 {
+      --tw-text-opacity: 1;
+      color: rgb(253 224 71 / var(--tw-text-opacity, 1))
+    }
+
+    .text-yellow-400 {
+      --tw-text-opacity: 1;
+      color: rgb(250 204 21 / var(--tw-text-opacity, 1))
+    }
+
+    .placeholder-primary\/50::placeholder {
+      color: rgb(139 69 19 / 0.5)
+    }
+
+    .placeholder-purple-700\/50::placeholder {
+      color: rgb(126 34 206 / 0.5)
+    }
+
+    .placeholder-red-600\/50::placeholder {
+      color: rgb(220 38 38 / 0.5)
+    }
+
+    .placeholder-red-700\/50::placeholder {
+      color: rgb(185 28 28 / 0.5)
+    }
+
+    .placeholder-slate-600\/50::placeholder {
+      color: rgb(71 85 105 / 0.5)
+    }
+
+    .opacity-20 {
+      opacity: 0.2
+    }
+
+    .shadow-lg {
+      --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)
+    }
+
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms
+    }
+
+    .transition-colors {
+      transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+      transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms
+    }
+
+    .hover\:bg-primary\/90:hover {
+      background-color: rgb(139 69 19 / 0.9)
+    }
+
+    .hover\:bg-red-700:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:bg-yellow-400:hover {
+      --tw-bg-opacity: 1;
+      background-color: rgb(250 204 21 / var(--tw-bg-opacity, 1))
+    }
+
+    .hover\:from-pink-600:hover {
+      --tw-gradient-from: #db2777 var(--tw-gradient-from-position);
+      --tw-gradient-to: rgb(219 39 119 / 0) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to)
+    }
+
+    .hover\:to-yellow-600:hover {
+      --tw-gradient-to: #ca8a04 var(--tw-gradient-to-position)
+    }
+
+    .focus\:border-pink-400:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(244 114 182 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:border-primary:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(139 69 19 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:border-red-500:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(239 68 68 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:border-secondary:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(218 165 32 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:border-yellow-400:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(250 204 21 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:border-yellow-500:focus {
+      --tw-border-opacity: 1;
+      border-color: rgb(234 179 8 / var(--tw-border-opacity, 1))
+    }
+
+    .focus\:outline-none:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px
+    }
+
+    @media (min-width: 768px) {
+      .md\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr))
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen py-8" data-new-gr-c-s-check-loaded="14.1252.0" data-gr-ext-installed="">
+  <div class="max-w-7xl mx-auto px-4 space-y-12">
+    <!-- Container 1: Classic Bollywood Poster Style -->
+    <div class="vintage-pattern-1 p-8 rounded-2xl ornate-border film-grain">
+      <div class="pattern-10">
+        <div id="poster1" class="floating-posters" style="top: 10%; left: 5%; transition: transform 2.27196s ease-in-out;"></div>
+        <div id="poster2" class="floating-posters" style="top: 25%; left: 15%; transition: transform 3.54309s ease-in-out;"></div>
+        <div id="poster3" class="floating-posters" style="top: 10%; right: 5%; transition: transform 2.66782s ease-in-out;"></div>
+        <div id="poster4" class="floating-posters" style="top: 25%; right: 15%; transition: transform 2.23506s ease-in-out;"></div>
+        <div id="poster5" class="floating-posters" style="bottom: 25%; left: 15%; transition: transform 2.34567s ease-in-out;"></div>
+        <div id="poster6" class="floating-posters" style="bottom: 25%; right: 15%; transition: transform 3.43903s ease-in-out;"></div>
+        <div id="poster7" class="floating-posters" style="bottom: 10%; left: 5%; transition: transform 3.23639s ease-in-out;"></div>
+        <div id="poster8" class="floating-posters" style="bottom: 10%; right: 5%; transition: transform 3.47959s ease-in-out;"></div>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <div class="text-center mb-8">
+          <h2 class="text-4xl font-bold text-primary mb-2" style="font-family: 'Playfair Display', serif;">Reserve • बुकिंग</h2>
+          <p class="text-lg text-primary/80 italic" style="font-family: 'Dancing Script', cursive;">"Be our guest and" - walk ins welcome, booking is
+            better</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Name</label>
+            <input type="text"
+              class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary placeholder-primary/50 focus:border-secondary focus:outline-none"
+              placeholder="Your name">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Email</label>
+            <input type="email"
+              class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary placeholder-primary/50 focus:border-secondary focus:outline-none"
+              placeholder="your@email.com">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Phone</label>
+            <input type="tel"
+              class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary placeholder-primary/50 focus:border-secondary focus:outline-none"
+              placeholder="Phone number">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Date</label>
+            <input type="date"
+              class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary focus:border-secondary focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Time</label>
+            <input type="time"
+              class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary focus:border-secondary focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-primary mb-2">Party Size</label>
+            <div class="relative">
+              <button
+                class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary text-left focus:border-secondary focus:outline-none flex items-center justify-between">
+                <span>2 guests</span>
+                <div class="w-5 h-5 flex items-center justify-center">
+                  <i class="ri-arrow-down-s-line"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-semibold text-primary mb-2">Notes</label>
+          <textarea
+            class="w-full px-4 py-3 border-2 border-secondary/30 rounded-md bg-white/80 text-primary placeholder-primary/50 focus:border-secondary focus:outline-none h-24 resize-none"
+            placeholder="Allergies, high-chair, birthdays..."></textarea>
+        </div>
+        <button
+          class="w-full bg-primary text-white py-4 rounded-button font-semibold text-lg hover:bg-primary/90 transition-colors whitespace-nowrap !rounded-button">
+          CONFIRM REQUEST
+        </button>
+        <p class="text-sm text-primary/60 text-center mt-4">Allergen info available on request. Optional 12.5% service charge goes to staff.</p>
+      </div>
+    </div>
+    </div>
+  </div>
+  <script id="form-interactions">
+    document.addEventListener('DOMContentLoaded', function () {
+      const partyButtons = document.querySelectorAll('button[class*="Party Size"]');
+      partyButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+          const currentText = this.querySelector('span').textContent;
+          const options = ['1 guest', '2 guests', '3 guests', '4 guests', '5 guests', '6+ guests'];
+          const currentIndex = options.findIndex(option => option === currentText);
+          const nextIndex = (currentIndex + 1) % options.length;
+          this.querySelector('span').textContent = options[nextIndex];
+        });
+      });
+    });
+  </script>
+  <script id="poster-animations">
+    document.addEventListener('DOMContentLoaded', function () {
+      const patterns = {
+        'pattern-1': { x: 10, y: 10, rotate: 6, duration: [2, 4] },
+        'pattern-2': { x: 15, y: 8, rotate: 8, duration: [3, 5] },
+        'pattern-3': { x: 12, y: 12, rotate: 5, duration: [2.5, 4.5] },
+        'pattern-4': { x: 8, y: 15, rotate: 7, duration: [2, 3.5] },
+        'pattern-5': { x: 14, y: 10, rotate: 4, duration: [3, 4] },
+        'pattern-6': { x: 10, y: 14, rotate: 9, duration: [2.5, 3.5] },
+        'pattern-7': { x: 12, y: 8, rotate: 5, duration: [2, 4.5] },
+        'pattern-8': { x: 15, y: 12, rotate: 6, duration: [3.5, 5] },
+        'pattern-9': { x: 8, y: 8, rotate: 7, duration: [2, 3] },
+        'pattern-10': { x: 14, y: 14, rotate: 8, duration: [3, 4.5] }
+      };
+      function animatePattern(pattern, posters) {
+        const config = patterns[pattern];
+        posters.forEach(poster => {
+          const randomX = Math.random() * config.x - config.x / 2;
+          const randomY = Math.random() * config.y - config.y / 2;
+          const randomRotate = Math.random() * config.rotate - config.rotate / 2;
+          const randomDuration = config.duration[0] + Math.random() * (config.duration[1] - config.duration[0]);
+          const baseTransform = window.getComputedStyle(poster).transform;
+          poster.style.transition = `transform ${randomDuration}s ease-in-out`;
+          poster.style.transform = `${baseTransform} translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+        });
+      }
+      function initializePatternAnimations() {
+        Object.keys(patterns).forEach(pattern => {
+          const container = document.querySelector(`.${pattern}`);
+          if (container) {
+            const posters = container.querySelectorAll('.floating-posters');
+            setInterval(() => animatePattern(pattern, posters), 3000);
+            animatePattern(pattern, posters);
+            posters.forEach(poster => {
+              poster.addEventListener('mouseenter', function () {
+                const baseTransform = window.getComputedStyle(this).transform.replace('none', '');
+                this.style.transform = `${baseTransform} scale(1.1)`;
+                this.style.zIndex = '10';
+              });
+              poster.addEventListener('mouseleave', function () {
+                const baseTransform = window.getComputedStyle(this).transform.replace('scale(1.1)', '');
+                this.style.transform = baseTransform;
+                this.style.zIndex = '1';
+              });
+            });
+          }
+        });
+      }
+      initializePatternAnimations();
+    });
+  </script>
+  <script id="button-hover-effects">
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function () {
+          this.style.transform = 'translateY(-1px)';
+          this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+        });
+        button.addEventListener('mouseleave', function () {
+          this.style.transform = 'translateY(0)';
+          this.style.boxShadow = '';
+        });
+      });
+    });
+  </script>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+
+</html>

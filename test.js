@@ -178,3 +178,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const patterns = {
+    "pattern-1": { x: 10, y: 10, rotate: 6, duration: [2, 4] },
+  };
+
+  function animatePattern(pattern, posters) {
+    const config = patterns[pattern];
+    posters.forEach((poster) => {
+      const randomX = Math.random() * config.x - config.x / 2;
+      const randomY = Math.random() * config.y - config.y / 2;
+      const randomRotate = Math.random() * config.rotate - config.rotate / 2;
+      const randomDuration = config.duration[0] + Math.random() * (config.duration[1] - config.duration[0]);
+      const baseTransform = window.getComputedStyle(poster).transform;
+      poster.style.transition = `transform ${randomDuration}s ease-in-out`;
+      poster.style.transform = `${baseTransform} translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+    });
+  }
+
+  function initializePatternAnimations() {
+    Object.keys(patterns).forEach((pattern) => {
+      const container = document.querySelector(`.${pattern}`);
+      if (container) {
+        const posters = container.querySelectorAll(".floating-posters");
+        setInterval(() => animatePattern(pattern, posters), 3000);
+        animatePattern(pattern, posters);
+      }
+    });
+  }
+
+  initializePatternAnimations();
+});
