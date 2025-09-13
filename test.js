@@ -209,4 +209,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   initializePatternAnimations();
+
+  // ====== NEW PART: Show/hide posters on specific sections ======
+  const postersContainer = document.getElementById("floating-posters");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      let visible = entries.some((entry) => entry.isIntersecting);
+      postersContainer.classList.toggle("active", visible);
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll(".show-posters").forEach((section) => {
+    observer.observe(section);
+  });
 });

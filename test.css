@@ -1355,6 +1355,7 @@ copyright,
 
 /* css for floating elements */
 
+/* Base hidden */
 .floating-posters {
   position: absolute;
   width: 120px;
@@ -1363,27 +1364,31 @@ copyright,
   background-position: center;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
-  transition: all 0.3s ease;
+  opacity: 0;
+  /* start hidden */
+  transition: opacity 0.8s ease, transform 0.3s ease;
   z-index: 10000;
-  /* always float on top */
 }
 
+/* When container is active → show posters */
+#floating-posters.active .floating-posters {
+  opacity: 0.7;
+}
+
+/* Hover effect still works */
 .floating-posters:hover {
   transform: scale(1.1);
   opacity: 1;
   z-index: 10;
 }
 
-.floating-posters:hover {
-  transform: scale(1.1);
-  opacity: 1;
-}
-
 .pattern-1 {
-  position: fixed; /* 🔥 fixed to viewport */
-  inset: 0;        /* cover entire screen */
-  z-index: 10;     /* below form/header but above backgrounds */
+  position: fixed;
+  /* 🔥 fixed to viewport */
+  inset: 0;
+  /* cover entire screen */
+  z-index: 10;
+  /* below form/header but above backgrounds */
 }
 
 /* Patterns (from original) */
