@@ -870,9 +870,6 @@ video {
 /* =============== MAP / MARQUEE =============== */
 .map-section {
   position: relative;
-  background:
-    radial-gradient(circle at 50% 0%, #fdf3e0 0%, transparent 70%),
-    url(/images/pic2.png);
   /* make a light watermark tile */
   background-size: cover, 160px;
   background-repeat: no-repeat, repeat;
@@ -1355,7 +1352,15 @@ copyright,
 
 /* css for floating elements */
 
-/* Base hidden */
+/* Section acts like a "window" that clips the fixed posters */
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  /* 🔑 this hides fixed posters outside this section */
+}
+
+/* Posters float around like before */
 .floating-posters {
   position: absolute;
   width: 120px;
@@ -1364,32 +1369,25 @@ copyright,
   background-position: center;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  /* start hidden */
-  transition: opacity 0.8s ease, transform 0.3s ease;
-  z-index: 10000;
-}
-
-/* When container is active → show posters */
-#floating-posters.active .floating-posters {
   opacity: 0.7;
+  transition: all 0.3s ease;
+  z-index: 2;
 }
 
-/* Hover effect still works */
 .floating-posters:hover {
   transform: scale(1.1);
   opacity: 1;
   z-index: 10;
 }
 
+/* Container is fixed but clipped by section */
 .pattern-1 {
   position: fixed;
-  /* 🔥 fixed to viewport */
+  /* pinned to viewport */
   inset: 0;
-  /* cover entire screen */
-  z-index: 10;
-  /* below form/header but above backgrounds */
+  z-index: 1;
 }
+
 
 /* Patterns (from original) */
 .pattern-1 .floating-posters {

@@ -199,29 +199,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializePatternAnimations() {
     Object.keys(patterns).forEach((pattern) => {
-      const container = document.querySelector(`.${pattern}`);
-      if (container) {
+      const containers = document.querySelectorAll(`.${pattern}`);
+      containers.forEach((container) => {
         const posters = container.querySelectorAll(".floating-posters");
         setInterval(() => animatePattern(pattern, posters), 3000);
         animatePattern(pattern, posters);
-      }
+      });
     });
   }
 
   initializePatternAnimations();
-
-  // ====== NEW PART: Show/hide posters on specific sections ======
-  const postersContainer = document.getElementById("floating-posters");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      let visible = entries.some((entry) => entry.isIntersecting);
-      postersContainer.classList.toggle("active", visible);
-    },
-    { threshold: 0.3 }
-  );
-
-  document.querySelectorAll(".show-posters").forEach((section) => {
-    observer.observe(section);
-  });
 });
