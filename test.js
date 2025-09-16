@@ -131,82 +131,75 @@
   Menu Accordion: converts each .menu-category into an accessible
   accordion without changing your HTML.
 */
-document.addEventListener("DOMContentLoaded", () => {
-  const categories = document.querySelectorAll(".menu-category");
-  const startOpenIndex = 0; // open the first category by default. Set to -1 to start all closed.
+// ------- Floating motion (gentle random drift) -------
+(function () {
+  const posters = Array.from(document.querySelectorAll(".floating-posters"));
+  const config = { x: 12, y: 12, rotate: 6, duration: [2, 4] };
 
-  categories.forEach((cat, idx) => {
-    const h = cat.querySelector(".category-heading");
-    if (!h) return;
+  function animate() {
+    posters.forEach((el) => {
+      const dx = Math.random() * config.x - config.x / 2;
+      const dy = Math.random() * config.y - config.y / 2;
+      const dr = Math.random() * config.rotate - config.rotate / 2;
+      const dur = config.duration[0] + Math.random() * (config.duration[1] - config.duration[0]);
 
-    // 1) Build a button from the heading text
-    const labelText = h.textContent.trim();
-    const btn = document.createElement("button");
-    btn.className = "acc-btn";
-    btn.type = "button";
-    btn.setAttribute("aria-expanded", idx === startOpenIndex ? "true" : "false");
-
-    // Make a stable id from the label
-    const panelId = "panel-" + labelText.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    btn.setAttribute("aria-controls", panelId);
-    btn.innerHTML = `<span>${labelText}</span>`;
-
-    // Replace heading content with the button
-    h.textContent = "";
-    h.appendChild(btn);
-
-    // 2) Collect the .menu-item siblings and wrap into a panel
-    const items = Array.from(cat.querySelectorAll(":scope > .menu-item"));
-    const panel = document.createElement("div");
-    panel.className = "acc-panel";
-    panel.id = panelId;
-
-    // Move items into the panel
-    items.forEach((item) => panel.appendChild(item));
-
-    // Insert panel after heading
-    cat.appendChild(panel);
-
-    // Set initial state
-    if (idx !== startOpenIndex) panel.hidden = true;
-
-    // 3) Toggle on click
-    btn.addEventListener("click", () => {
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!expanded));
-      panel.hidden = expanded;
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-  const patterns = {
-    "pattern-1": { x: 10, y: 10, rotate: 6, duration: [2, 4] },
-  };
-
-  function animatePattern(pattern, posters) {
-    const config = patterns[pattern];
-    posters.forEach((poster) => {
-      const randomX = Math.random() * config.x - config.x / 2;
-      const randomY = Math.random() * config.y - config.y / 2;
-      const randomRotate = Math.random() * config.rotate - config.rotate / 2;
-      const randomDuration = config.duration[0] + Math.random() * (config.duration[1] - config.duration[0]);
-      const baseTransform = window.getComputedStyle(poster).transform;
-      poster.style.transition = `transform ${randomDuration}s ease-in-out`;
-      poster.style.transform = `${baseTransform} translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
+      const base = getComputedStyle(el).transform; // keep any previous rotate
+      el.style.transition = `transform ${dur}s ease-in-out`;
+      el.style.transform = `${base === "none" ? "" : base} translate(${dx}px, ${dy}px) rotate(${dr}deg)`;
     });
   }
+  animate();
+  setInterval(animate, 3000);
+})();
 
-  function initializePatternAnimations() {
-    Object.keys(patterns).forEach((pattern) => {
-      const containers = document.querySelectorAll(`.${pattern}`);
-      containers.forEach((container) => {
-        const posters = container.querySelectorAll(".floating-posters");
-        setInterval(() => animatePattern(pattern, posters), 3000);
-        animatePattern(pattern, posters);
+// ------- Clip the fixed posters to ONLY Section 3 viewport area -------
+(function () {
+  const postersLayer = document.getElementById("floating-posters");
+  const target = document.getElementById("reserve"); // Section 3
+
+  function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+  }
+
+  function updateClip() {
+    if (!target) return;
+
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const r = target.getBoundingClientRect();
+
+    // If the section is completely out of view, hide posters
+    if (r.bottom <= 0 || r.top >= vh || r.right <= 0 || r.left >= vw) {
+      postersLayer.style.opacity = "0";
+      postersLayer.style.clipPath = "inset(0 0 100% 0)"; // fully clipped
+      return;
+    }
+
+    // Compute how much to cut from each side of the fixed viewport layer
+    const cutTop = clamp(r.top, 0, vh);
+    const cutLeft = clamp(r.left, 0, vw);
+    const cutRight = clamp(vw - r.right, 0, vw);
+    const cutBottom = clamp(vh - r.bottom, 0, vh);
+
+    postersLayer.style.opacity = "1";
+    postersLayer.style.clipPath = `inset(${cutTop}px ${cutRight}px ${cutBottom}px ${cutLeft}px)`;
+  }
+
+  // Run on load/scroll/resize with rAF throttling
+  let ticking = false;
+  function onScrollOrResize() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateClip();
+        ticking = false;
       });
-    });
+      ticking = true;
+    }
   }
 
-  initializePatternAnimations();
-});
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize);
+  window.addEventListener("orientationchange", onScrollOrResize);
+  // Initial
+  updateClip();
+})();

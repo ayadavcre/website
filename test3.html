@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design 2 — Columns Loop (Left Up, Right Down)</title>
+  <style>
+    :root {
+      --poster-w: 120px;
+      --poster-h: 160px;
+      --gap: 24px;
+      /* We'll set --seq dynamically via JS to the exact height of one 4-poster sequence */
+      --seq: 712px;
+      /* fallback */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0 0 12px;
+    }
+
+    /* --- Demo layout --- */
+    .section {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 6rem 1rem;
+      position: relative;
+      overflow: visible;
+    }
+
+    .section--1 {
+      background: #f6f6f9;
+    }
+
+    .section--2 {
+      background: #e8f9f0;
+    }
+
+    .section--3 {
+      background: #fff7ea;
+    }
+
+    .section--4 {
+      background: #eaf3ff;
+    }
+
+    .section--5 {
+      background: #f5eaff;
+    }
+
+    .container {
+      width: min(960px, 92vw);
+      background: #ffffffaa;
+      backdrop-filter: blur(6px);
+      border: 1px solid #00000010;
+      border-radius: 16px;
+      padding: 28px;
+      z-index: 2;
+      /* above posters layer */
+    }
+
+    /* ----- Fixed posters layer (clipped to Section 3) ----- */
+    #floating-posters-2 {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      /* keep behind content */
+      opacity: 0;
+      /* hidden until section 3 intersects */
+      transition: opacity .3s ease;
+      pointer-events: none;
+      /* won’t block form inputs */
+      will-change: clip-path, opacity, transform;
+    }
+
+    /* Two side columns */
+    .poster-col {
+      position: absolute;
+      top: 0;
+      height: 100vh;
+      width: var(--poster-w);
+      overflow: hidden;
+      /* clip tracks inside the column */
+    }
+
+    .poster-col.left {
+      left: 10vw;
+    }
+
+    .poster-col.right {
+      right: 10vw;
+    }
+
+    /* The moving stack that contains TWO sequences (for seamless loop) */
+    .stack {
+      position: absolute;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    /* Each sequence = 4 posters stacked */
+    .sequence {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    /* Posters */
+    .poster {
+      width: var(--poster-w);
+      height: var(--poster-h);
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+      opacity: .85;
+      transform: translateZ(0);
+      /* hint for smoother anim */
+    }
+
+    .poster:hover {
+      opacity: 1;
+    }
+
+    /* Animations: left column scrolls UP, right column scrolls DOWN */
+    @keyframes scrollUp {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(calc(-1 * var(--seq)));
+      }
+
+      /* move by one sequence height */
+    }
+
+    @keyframes scrollDown {
+      0% {
+        transform: translateY(calc(-1 * var(--seq)));
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .poster-col.left .stack {
+      animation: scrollUp 16s linear infinite;
+    }
+
+    .poster-col.right .stack {
+      animation: scrollDown 16s linear infinite;
+    }
+
+    /* Simple form cosmetics */
+    form {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    form .full {
+      grid-column: 1 / -1;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #0000001a;
+      border-radius: 10px;
+      font-size: 16px;
+      background: #fff;
+    }
+
+    button {
+      background: #8B4513;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      filter: brightness(1.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Fixed posters layer (Design 2), clipped to Section 3 via JS -->
+  <div id="floating-posters-2">
+    <!-- Left column: 4 posters moving UP -->
+    <div class="poster-col left">
+      <div class="stack">
+        <!-- sequence 1 -->
+        <div class="sequence">
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1011/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1012/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1013/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1014/240/320');"></div>
+        </div>
+        <!-- sequence 2 (duplicate for seamless loop) -->
+        <div class="sequence">
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1011/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1012/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1013/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1014/240/320');"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: 4 posters moving DOWN -->
+    <div class="poster-col right">
+      <div class="stack">
+        <!-- sequence 1 -->
+        <div class="sequence">
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1015/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1016/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1017/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1018/240/320');"></div>
+        </div>
+        <!-- sequence 2 (duplicate for seamless loop) -->
+        <div class="sequence">
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1015/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1016/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1017/240/320');"></div>
+          <div class="poster" style="background-image:url('https://picsum.photos/id/1018/240/320');"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Section 1 ===== -->
+  <section class="section section--1">
+    <div class="container">
+      <h1>Section 1 — Hero</h1>
+      <p>Scroll down. Section 3 has the posters with column loop (left up, right down).</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 2 ===== -->
+  <section class="section section--2">
+    <div class="container">
+      <h2>Section 2</h2>
+      <p>Keep going 👇</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 3 (Reserve) — Posters appear only within this section ===== -->
+  <section id="reserve" class="section section--3">
+    <div class="container" style="position: relative; z-index: 2;">
+      <header style="text-align:center; margin-bottom:16px;">
+        <h2>Reserve • बुकिंग</h2>
+        <p>“देर आए दुरुस्त आए”—walk-ins welcome, booking is बेहतर.</p>
+      </header>
+
+      <form action="#" method="post">
+        <label>
+          Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" inputmode="tel" />
+        </label>
+        <label>
+          Date
+          <input type="date" name="date" required />
+        </label>
+        <label>
+          Time
+          <input type="time" name="time" required />
+        </label>
+        <label>
+          Party Size
+          <select name="size">
+            <option>1 guest</option>
+            <option selected>2 guests</option>
+            <option>3 guests</option>
+            <option>4 guests</option>
+            <option>5 guests</option>
+            <option>6+ guests</option>
+          </select>
+        </label>
+        <label class="full">
+          Notes
+          <textarea rows="3" placeholder="Allergies, high-chair, birthdays…"></textarea>
+        </label>
+        <button class="full" type="submit">Confirm Request</button>
+        <p class="full" style="opacity:.8; font-size:.9rem;">Allergen info available on request. Optional 12.5% service charge goes to staff.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Section 4 ===== -->
+  <section class="section section--4">
+    <div class="container">
+      <h2>Section 4</h2>
+      <p>Posters should be gone now (they’re clipped strictly to Section 3).</p>
+    </div>
+  </section>
+
+  <!-- ===== Section 5 ===== -->
+  <section class="section section--5">
+    <div class="container">
+      <h2>Section 5 — Footer-ish</h2>
+      <p>End of Design 2 demo.</p>
+    </div>
+  </section>
+
+  <script>
+    /* 
+      1) Clip the FIXED posters layer to ONLY the visible portion of Section 3
+         (same principle as Design 1).
+      2) Measure one sequence (4 posters + gaps) and set --seq so the loop is seamless.
+    */
+
+    (function () {
+      const layer = document.getElementById('floating-posters-2');
+      const target = document.getElementById('reserve'); // Section 3
+
+      function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+      function updateClip() {
+        if (!target) return;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const r = target.getBoundingClientRect();
+
+        // Hide if completely outside viewport
+        if (r.bottom <= 0 || r.top >= vh || r.right <= 0 || r.left >= vw) {
+          layer.style.opacity = '0';
+          layer.style.clipPath = 'inset(0 0 100% 0)';
+          return;
+        }
+
+        const cutTop = clamp(r.top, 0, vh);
+        const cutLeft = clamp(r.left, 10, vw);
+        const cutRight = clamp(vw - r.right, 10, vw);
+        const cutBottom = clamp(vh - r.bottom, 0, vh);
+
+        layer.style.opacity = '1';
+        layer.style.clipPath = `inset(${cutTop}px ${cutRight}px ${cutBottom}px ${cutLeft}px)`;
+      }
+
+      // Measure sequence height (4 posters + 3 gaps) dynamically
+      function updateSequenceHeight() {
+        // Left column's first sequence as reference
+        const seq = document.querySelector('.poster-col.left .sequence');
+        if (!seq) return;
+        const height = seq.getBoundingClientRect().height;
+        // Set CSS variable so keyframes move exactly one sequence
+        document.documentElement.style.setProperty('--seq', height + 'px');
+      }
+
+      // Initial measure and clip
+      updateSequenceHeight();
+      updateClip();
+
+      // Recalc on resize/orientation changes
+      let ticking = false;
+      function onScrollOrResize() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateSequenceHeight();
+            updateClip();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScrollOrResize, { passive: true });
+      window.addEventListener('resize', onScrollOrResize);
+      window.addEventListener('orientationchange', onScrollOrResize);
+    })();
+  </script>
+</body>
+
+</html>

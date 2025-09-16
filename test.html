@@ -17,6 +17,20 @@
 
 <body class="paper">
 
+  <!-- Fixed posters layer (always in DOM), we clip it to Section 3 via JS -->
+  <div id="floating-posters" class="pattern-1">
+    <!-- Positions are set inline; tweak to taste -->
+    <div id="poster1" class="floating-posters" style="top:10%; left:5%;"></div>
+    <div id="poster2" class="floating-posters" style="top:24%; left:12%;"></div>
+    <div id="poster3" class="floating-posters" style="top:12%; right:6%;"></div>
+    <div id="poster4" class="floating-posters" style="top:28%; right:16%;"></div>
+    <div id="poster5" class="floating-posters" style="bottom:28%; left:14%;"></div>
+    <div id="poster6" class="floating-posters" style="bottom:28%; right:14%;"></div>
+    <div id="poster7" class="floating-posters" style="bottom:12%; left:6%;"></div>
+    <div id="poster8" class="floating-posters" style="bottom:12%; right:6%;"></div>
+  </div>
+
+
   <!-- ===== Masthead / Header ===== -->
   <header class="masthead" role="banner">
     <!-- <div class="masthead-top">
@@ -825,65 +839,52 @@
 
 
   <!-- ===== Reservations ===== -->
-  <section id="reserve section4" class="parallax-section section wrap relative min-h-screen show-posters">
+  <section id="reserve">
+    <section id="" class="parallax-section section relative min-h-screen show-posters">
+      <!-- Content -->
+      <header class="section-hd text-center relative z-20 wrap">
+        <h2>Reserve • बुकिंग</h2>
+        <p class="dek">“देर आए दुरुस्त आए”—walk-ins welcome, booking is बेहतर.</p>
+      </header>
+
+      <form class="reserve-form relative z-20 wrap" action="#" method="post">
+        <label>
+          Name
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          Phone
+          <input type="tel" name="phone" inputmode="tel" />
+        </label>
+        <label>
+          Date
+          <input type="date" name="date" required />
+        </label>
+        <label>
+          Time
+          <input type="time" name="time" required />
+        </label>
+        <label>
+          Party Size
+          <input type="number" name="size" min="1" max="20" value="2" />
+        </label>
+        <label class="full">
+          Notes
+          <textarea name="notes" rows="3" placeholder="Allergies, high-chair, birthdays…"></textarea>
+        </label>
+        <button class="btn btn-stub" type="submit">Confirm Request</button>
+        <p class="fineprint">Allergen info available on request. Optional 12.5% service charge goes to staff.</p>
+      </form>
+
+    </section>
 
 
-      <!-- Posters container: fixed to viewport -->
-      <div id="floating-posters" class="pattern-1 fixed inset-0">
-        <div id="poster1" class="floating-posters" style="top: 10%; left: 5%; transition: transform 2.27196s ease-in-out;"></div>
-        <div id="poster2" class="floating-posters" style="top: 25%; left: 15%; transition: transform 3.54309s ease-in-out;"></div>
-        <div id="poster3" class="floating-posters" style="top: 10%; right: 5%; transition: transform 2.66782s ease-in-out;"></div>
-        <div id="poster4" class="floating-posters" style="top: 25%; right: 15%; transition: transform 2.23506s ease-in-out;"></div>
-        <div id="poster5" class="floating-posters" style="bottom: 25%; left: 15%; transition: transform 2.34567s ease-in-out;"></div>
-        <div id="poster6" class="floating-posters" style="bottom: 25%; right: 15%; transition: transform 3.43903s ease-in-out;"></div>
-        <div id="poster7" class="floating-posters" style="bottom: 10%; left: 5%; transition: transform 3.23639s ease-in-out;"></div>
-        <div id="poster8" class="floating-posters" style="bottom: 10%; right: 5%; transition: transform 3.47959s ease-in-out;"></div>
-      </div>
-
-    <!-- Content -->
-    <header class="section-hd text-center relative z-20">
-      <h2>Reserve • बुकिंग</h2>
-      <p class="dek">“देर आए दुरुस्त आए”—walk-ins welcome, booking is बेहतर.</p>
-    </header>
-
-    <form class="reserve-form relative z-20" action="#" method="post">
-      <label>
-        Name
-        <input type="text" name="name" required />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" required />
-      </label>
-      <label>
-        Phone
-        <input type="tel" name="phone" inputmode="tel" />
-      </label>
-      <label>
-        Date
-        <input type="date" name="date" required />
-      </label>
-      <label>
-        Time
-        <input type="time" name="time" required />
-      </label>
-      <label>
-        Party Size
-        <input type="number" name="size" min="1" max="20" value="2" />
-      </label>
-      <label class="full">
-        Notes
-        <textarea name="notes" rows="3" placeholder="Allergies, high-chair, birthdays…"></textarea>
-      </label>
-      <button class="btn btn-stub" type="submit">Confirm Request</button>
-      <p class="fineprint">Allergen info available on request. Optional 12.5% service charge goes to staff.</p>
-    </form>
-
-  </section>
-
-
-  <!-- ===== Gallery ===== -->
-  <!--section id="gallery" class="section wrap">
+    <!-- ===== Gallery ===== -->
+    <!--section id="gallery" class="section wrap">
     <header class="section-hd">
       <h2>Gallery • गैलरी</h2>
       <p class="dek">“देखो मगर प्यार से”—hover for रंगीन drama.</p>
@@ -903,39 +904,39 @@
 
 
   <!-- ===== Find Us / Map (Bollywood marquee) ===== -->
-  <section id="find-us" class="section map-section wrap show-posters">
-    <header class="section-hd">
-      <h2>Find Us • Map</h2>
-      <p class="dek">Lights, camera, samosa — see you in Doncaster.</p>
-    </header>
+    <section id="find-us" class="section map-section wrap show-posters">
+      <header class="section-hd">
+        <h2>Find Us • Map</h2>
+        <p class="dek">Lights, camera, samosa — see you in Doncaster.</p>
+      </header>
 
-    <div class="cinema-map ">
-      <!-- Arch / marquee header -->
-      <div class="marquee-arch" aria-hidden="true">
-        <div class="arch-title">NOW SHOWING • ITZ DELHI</div>
-        <div class="arch-sub">1 Priory Walk, DN1 1TR, Doncaster</div>
-      </div>
+      <div class="cinema-map ">
+        <!-- Arch / marquee header -->
+        <div class="marquee-arch" aria-hidden="true">
+          <div class="arch-title">NOW SHOWING • ITZ DELHI</div>
+          <div class="arch-sub">1 Priory Walk, DN1 1TR, Doncaster</div>
+        </div>
 
-      <!-- Framed map with “bulb” lights -->
-      <div class="cinema-frame">
-        <span class="bulbs v left" aria-hidden="true"></span>
-        <span class="bulbs v right" aria-hidden="true"></span>
+        <!-- Framed map with “bulb” lights -->
+        <div class="cinema-frame">
+          <span class="bulbs v left" aria-hidden="true"></span>
+          <span class="bulbs v right" aria-hidden="true"></span>
 
-        <iframe class="map-embed"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.9573257948296!2d-1.1337343!3d53.522819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790db40b7bced9%3A0x8e3cc343a8fa91b4!2sITZ%20DELHI!5e0!3m2!1sen!2sin!4v1756026933899!5m2!1sen!2sin"
-          title="Map: ITZ DELHI, 1 Priory Walk, DN1 1TR, Doncaster" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+          <iframe class="map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2371.9573257948296!2d-1.1337343!3d53.522819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790db40b7bced9%3A0x8e3cc343a8fa91b4!2sITZ%20DELHI!5e0!3m2!1sen!2sin!4v1756026933899!5m2!1sen!2sin"
+            title="Map: ITZ DELHI, 1 Priory Walk, DN1 1TR, Doncaster" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
 
-      <div class="map-cta">
-        <a class="btn btn-stamp" href="https://www.google.com/maps/dir/?api=1&destination=ITZ+DELHI,+1+Priory+Walk,+DN1+1TR,+Doncaster"
-          target="_blank" rel="noopener">
-          Get Directions
-        </a>
-        <p class="fineprint">Central Doncaster • parking nearby</p>
-      </div>
+        <div class="map-cta">
+          <a class="btn btn-stamp" href="https://www.google.com/maps/dir/?api=1&destination=ITZ+DELHI,+1+Priory+Walk,+DN1+1TR,+Doncaster"
+            target="_blank" rel="noopener">
+            Get Directions
+          </a>
+          <p class="fineprint">Central Doncaster • parking nearby</p>
+        </div>
+    </section>
   </section>
-
   <!-- ===== Footer ===== -->
   <footer class="footer">
     <div class="wrap footer-grid">

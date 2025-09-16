@@ -7,6 +7,8 @@
   --accent-2: #0d6b6b;
   --gold: #c7a969;
   --rule: #1f1f1f22;
+  --vh: 100vh;
+  --vw: 100vw;
 }
 
 @font-face {
@@ -1352,126 +1354,72 @@ copyright,
 
 /* css for floating elements */
 
-/* Section acts like a "window" that clips the fixed posters */
-.parallax-section {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  /* 🔑 this hides fixed posters outside this section */
+/* Fixed, full-viewport layer that we'll CLIP to Section 3 via clip-path */
+#floating-posters {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  /* stays behind content cards */
+  opacity: 0;
+  /* hidden until section 3 is in view */
+  transition: opacity .4s ease;
+  will-change: clip-path, opacity;
+  /* important so it doesn't block clicks */
+  pointer-events: none;
 }
 
-/* Posters float around like before */
+/* The 8 posters themselves */
 .floating-posters {
   position: absolute;
   width: 120px;
   height: 160px;
+  border-radius: 10px;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  z-index: 2;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+  opacity: .75;
+  transition: transform .3s ease;
 }
 
 .floating-posters:hover {
-  transform: scale(1.1);
+  transform: scale(1.06);
   opacity: 1;
-  z-index: 10;
 }
 
-/* Container is fixed but clipped by section */
-.pattern-1 {
-  position: fixed;
-  /* pinned to viewport */
-  inset: 0;
-  z-index: 1;
-}
-
-
-/* Patterns (from original) */
+/* A mild base “pattern” look (you can keep/remove these) */
 .pattern-1 .floating-posters {
-  transform: rotate(-5deg);
-  filter: sepia(0.3);
-}
-
-.pattern-2 .floating-posters {
-  transform: rotate(3deg);
-  filter: brightness(1.1) contrast(1.1);
-}
-
-.pattern-3 .floating-posters {
-  filter: saturate(1.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-
-.pattern-4 .floating-posters {
-  transform: perspective(1000px) rotateY(10deg);
-  filter: contrast(1.1);
-}
-
-.pattern-5 .floating-posters {
-  transform: skew(-2deg);
-  filter: brightness(1.2);
-}
-
-.pattern-6 .floating-posters {
-  transform: rotate(-8deg) scale(0.95);
-  filter: sepia(0.2) brightness(1.1);
-}
-
-.pattern-7 .floating-posters {
-  transform: perspective(1000px) rotateX(5deg);
-  filter: contrast(1.2) brightness(1.1);
-}
-
-.pattern-8 .floating-posters {
-  transform: rotate(5deg) scale(0.9);
-  filter: saturate(1.3);
-}
-
-.pattern-9 .floating-posters {
-  transform: skew(3deg) rotate(-3deg);
-  filter: brightness(1.15) contrast(1.05);
-}
-
-.pattern-10 .floating-posters {
-  transform: perspective(1000px) rotateY(-8deg);
-  filter: sepia(0.1) brightness(1.2);
+  filter: saturate(1.1) contrast(1.05);
 }
 
 /* Demo images (replace with yours) */
 #poster1 {
-  background-image: url('https://picsum.photos/id/1011/240/320');
+  background-image: url('/images/poster/pic6bol.jpeg');
 }
 
 #poster2 {
-  background-image: url('https://picsum.photos/id/1012/240/320');
+  background-image: url('/images/poster/pic7bol.jpeg');
 }
 
 #poster3 {
-  background-image: url('https://picsum.photos/id/1013/240/320');
+  background-image: url('/images/poster/pic1bol.jpg');
 }
 
 #poster4 {
-  background-image: url('https://picsum.photos/id/1014/240/320');
+  background-image: url('/images/poster/pic6bol.jpeg');
 }
 
 #poster5 {
-  background-image: url('https://picsum.photos/id/1015/240/320');
+  background-image: url('/images/poster/pic7bol.jpeg');
 }
 
 #poster6 {
-  background-image: url('https://picsum.photos/id/1016/240/320');
+  background-image: url('/images/poster/pic1bol.jpg');
 }
 
 #poster7 {
-  background-image: url('https://picsum.photos/id/1018/240/320');
+  background-image: url('/images/poster/pic6bol.jpeg');
 }
 
 #poster8 {
-  background-image: url('https://picsum.photos/id/1019/240/320');
+  background-image: url('/images/poster/pic7bol.jpeg');
 }
-
-
-/* anchor absolute children */
