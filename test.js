@@ -131,6 +131,57 @@
   Menu Accordion: converts each .menu-category into an accessible
   accordion without changing your HTML.
 */
+/*
+  Menu Accordion: converts each .menu-category into an accessible
+  accordion without changing your HTML.
+*/
+document.addEventListener("DOMContentLoaded", () => {
+  const categories = document.querySelectorAll(".menu-category");
+  const startOpenIndex = 0; // open the first category by default. Set to -1 to start all closed.
+
+  categories.forEach((cat, idx) => {
+    const h = cat.querySelector(".category-heading");
+    if (!h) return;
+
+    // 1) Build a button from the heading text
+    const labelText = h.textContent.trim();
+    const btn = document.createElement("button");
+    btn.className = "acc-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-expanded", idx === startOpenIndex ? "true" : "false");
+
+    // Make a stable id from the label
+    const panelId = "panel-" + labelText.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    btn.setAttribute("aria-controls", panelId);
+    btn.innerHTML = `<span>${labelText}</span>`;
+
+    // Replace heading content with the button
+    h.textContent = "";
+    h.appendChild(btn);
+
+    // 2) Collect the .menu-item siblings and wrap into a panel
+    const items = Array.from(cat.querySelectorAll(":scope > .menu-item"));
+    const panel = document.createElement("div");
+    panel.className = "acc-panel";
+    panel.id = panelId;
+
+    // Move items into the panel
+    items.forEach((item) => panel.appendChild(item));
+
+    // Insert panel after heading
+    cat.appendChild(panel);
+
+    // Set initial state
+    if (idx !== startOpenIndex) panel.hidden = true;
+
+    // 3) Toggle on click
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      panel.hidden = expanded;
+    });
+  });
+});
 // ------- Floating motion (gentle random drift) -------
 (function () {
   const posters = Array.from(document.querySelectorAll(".floating-posters"));
